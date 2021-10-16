@@ -1,55 +1,63 @@
 package tn.esprit.magasin.entity;
-import java.io.Serializable;
 
+import java.io.Serializable;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
-public class Fournisseur implements Serializable{
+public class Fournisseur implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idFournisseur")
 	private Long idFournisseur;
 	private String code;
 	private String libelle;
-	
-	
+
+	@ManyToMany(mappedBy = "fournisseurs", cascade = CascadeType.ALL)
+	private Set<Produit> produits;
+
 	public Fournisseur(Long idFournisseur, String code, String libelle) {
 		super();
 		this.idFournisseur = idFournisseur;
 		this.code = code;
 		this.libelle = libelle;
 	}
-	
-	
-	
+
 	public Fournisseur() {
 		super();
 	}
 
-
-
 	public Long getIdFournisseur() {
 		return idFournisseur;
 	}
+
 	public void setIdFournisseur(Long idFournisseur) {
 		this.idFournisseur = idFournisseur;
 	}
+
 	public String getCode() {
 		return code;
 	}
+
 	public void setCode(String code) {
 		this.code = code;
 	}
+
 	public String getLibelle() {
 		return libelle;
 	}
+
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -59,6 +67,7 @@ public class Fournisseur implements Serializable{
 		result = prime * result + ((libelle == null) ? 0 : libelle.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -85,11 +94,10 @@ public class Fournisseur implements Serializable{
 			return false;
 		return true;
 	}
+
 	@Override
 	public String toString() {
 		return "Fournisseur [idFournisseur=" + idFournisseur + ", code=" + code + ", libelle=" + libelle + "]";
 	}
-	
-	
-	
+
 }
