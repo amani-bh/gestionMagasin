@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,6 +14,7 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Stock implements Serializable {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idStock")
@@ -35,6 +37,7 @@ public class Stock implements Serializable {
 	public Stock() {
 		super();
 	}
+
 
 	public Long getIdStock() {
 		return idStock;
