@@ -8,13 +8,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
 public class Facture implements Serializable{
-	
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idFacture")
@@ -24,9 +24,10 @@ public class Facture implements Serializable{
 	@Temporal(TemporalType.DATE)
 	private Date dateFacture;
 	private Boolean active;
-	
-	
-	
+
+	@ManyToOne
+	private Client client;
+
 	public Facture(Long idFacture, float montantRemise, float montantFacture, Date dateFacture, Boolean active) {
 		super();
 		this.idFacture = idFacture;
@@ -35,45 +36,60 @@ public class Facture implements Serializable{
 		this.dateFacture = dateFacture;
 		this.active = active;
 	}
-	
-	
-	
+
 	public Facture() {
 		super();
 	}
 
 
-
 	public Long getIdFacture() {
 		return idFacture;
 	}
+
 	public void setIdFacture(Long idFacture) {
 		this.idFacture = idFacture;
 	}
+
 	public float getMontantRemise() {
 		return montantRemise;
 	}
+
 	public void setMontantRemise(float montantRemise) {
 		this.montantRemise = montantRemise;
 	}
+
 	public float getMontantFacture() {
 		return montantFacture;
 	}
+
 	public void setMontantFacture(float montantFacture) {
 		this.montantFacture = montantFacture;
 	}
+
 	public Date getDateFacture() {
 		return dateFacture;
 	}
+
 	public void setDateFacture(Date dateFacture) {
 		this.dateFacture = dateFacture;
 	}
+
 	public Boolean getActive() {
 		return active;
 	}
+
 	public void setActive(Boolean active) {
 		this.active = active;
 	}
+
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -85,6 +101,7 @@ public class Facture implements Serializable{
 		result = prime * result + Float.floatToIntBits(montantRemise);
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -115,12 +132,11 @@ public class Facture implements Serializable{
 			return false;
 		return true;
 	}
+
 	@Override
 	public String toString() {
 		return "Facture [idFacture=" + idFacture + ", montantRemise=" + montantRemise + ", montantFacture="
 				+ montantFacture + ", dateFacture=" + dateFacture + ", active=" + active + "]";
 	}
-	
-	
 
 }

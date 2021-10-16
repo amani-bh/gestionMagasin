@@ -7,10 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class DetailFacture implements Serializable {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idDetailFacture")
@@ -19,8 +20,11 @@ public class DetailFacture implements Serializable {
 	private float prixTotal;
 	private int pourcentageRemise;
 	private float montantRemise;
-	
-	
+
+	@ManyToOne
+	private Produit produit;
+
+
 	public DetailFacture(Long idDetailFacture, int qte, float prixTotal, int pourcentageRemise, float montantRemise) {
 		super();
 		this.idDetailFacture = idDetailFacture;
@@ -29,45 +33,59 @@ public class DetailFacture implements Serializable {
 		this.pourcentageRemise = pourcentageRemise;
 		this.montantRemise = montantRemise;
 	}
-	
-	
-	
+
 	public DetailFacture() {
 		super();
 	}
 
-
-
 	public Long getIdDetailFacture() {
 		return idDetailFacture;
 	}
+
 	public void setIdDetailFacture(Long idDetailFacture) {
 		this.idDetailFacture = idDetailFacture;
 	}
+
 	public int getQte() {
 		return qte;
 	}
+
 	public void setQte(int qte) {
 		this.qte = qte;
 	}
+
 	public float getPrixTotal() {
 		return prixTotal;
 	}
+
 	public void setPrixTotal(float prixTotal) {
 		this.prixTotal = prixTotal;
 	}
+
 	public int getPourcentageRemise() {
 		return pourcentageRemise;
 	}
+
 	public void setPourcentageRemise(int pourcentageRemise) {
 		this.pourcentageRemise = pourcentageRemise;
 	}
+
 	public float getMontantRemise() {
 		return montantRemise;
 	}
+
 	public void setMontantRemise(float montantRemise) {
 		this.montantRemise = montantRemise;
 	}
+
+	public Produit getProduit() {
+		return produit;
+	}
+
+	public void setProduit(Produit produit) {
+		this.produit = produit;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -79,6 +97,7 @@ public class DetailFacture implements Serializable {
 		result = prime * result + qte;
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -103,13 +122,11 @@ public class DetailFacture implements Serializable {
 			return false;
 		return true;
 	}
+
 	@Override
 	public String toString() {
 		return "DetailFacture [idDetailFacture=" + idDetailFacture + ", qte=" + qte + ", prixTotal=" + prixTotal
 				+ ", pourcentageRemise=" + pourcentageRemise + ", montantRemise=" + montantRemise + "]";
 	}
-	
-	
-	
 
 }
