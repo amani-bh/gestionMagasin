@@ -1,5 +1,7 @@
 package tn.esprit.magasin.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,7 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class DetailFacture {
+public class DetailFacture implements Serializable {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idDetailFacture")
@@ -16,6 +19,8 @@ public class DetailFacture {
 	private float prixTotal;
 	private int pourcentageRemise;
 	private float montantRemise;
+	
+	
 	public DetailFacture(Long idDetailFacture, int qte, float prixTotal, int pourcentageRemise, float montantRemise) {
 		super();
 		this.idDetailFacture = idDetailFacture;
@@ -24,6 +29,15 @@ public class DetailFacture {
 		this.pourcentageRemise = pourcentageRemise;
 		this.montantRemise = montantRemise;
 	}
+	
+	
+	
+	public DetailFacture() {
+		super();
+	}
+
+
+
 	public Long getIdDetailFacture() {
 		return idDetailFacture;
 	}

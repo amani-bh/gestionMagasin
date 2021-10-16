@@ -2,6 +2,7 @@ package tn.esprit.magasin.entity;
 
 
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -15,7 +16,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-public class Client {
+public class Client implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idClient")
@@ -30,6 +31,8 @@ public class Client {
 	private CategorieClient categorieClient;
 	@Enumerated(EnumType.STRING)
 	private Profession profession;
+	
+	
 	public Client(Long idClient, String nom, String prenom, Date dateNaissance, String email, String password,
 			CategorieClient categorieClient, Profession profession) {
 		super();
@@ -42,6 +45,15 @@ public class Client {
 		this.categorieClient = categorieClient;
 		this.profession = profession;
 	}
+	
+	
+	
+	public Client() {
+		super();
+	}
+
+
+
 	public Long getIdClient() {
 		return idClient;
 	}

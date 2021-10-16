@@ -1,5 +1,6 @@
 package tn.esprit.magasin.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -11,7 +12,9 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-public class DetailProduit {
+public class DetailProduit implements Serializable{
+	
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idDetailProduit")
@@ -21,6 +24,8 @@ public class DetailProduit {
 	@Temporal(TemporalType.DATE)
 	private Date  DerniereModification;
 	private CategorieProduit categorieProduit;
+	
+	
 	public DetailProduit(Long idDetailProduit, Date dateCreation, Date derniereModification,
 			CategorieProduit categorieProduit) {
 		super();
@@ -29,6 +34,15 @@ public class DetailProduit {
 		DerniereModification = derniereModification;
 		this.categorieProduit = categorieProduit;
 	}
+	
+	
+	
+	public DetailProduit() {
+		super();
+	}
+
+
+
 	public Long getIdDetailProduit() {
 		return idDetailProduit;
 	}
