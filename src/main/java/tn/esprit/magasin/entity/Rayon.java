@@ -1,56 +1,71 @@
 package tn.esprit.magasin.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
-public class Rayon implements Serializable{
+public class Rayon implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idRayon")
 	private Long idRayon;
 	private String code;
 	private String libelle;
-	
-	
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "rayon")
+	private List<Produit> produits;
+
 	public Rayon(Long idRayon, String code, String libelle) {
 		super();
 		this.idRayon = idRayon;
 		this.code = code;
 		this.libelle = libelle;
 	}
-	
-	
-	
+
 	public Rayon() {
 		super();
 	}
 
-
-
 	public Long getIdRayon() {
 		return idRayon;
 	}
+
 	public void setIdRayon(Long idRayon) {
 		this.idRayon = idRayon;
 	}
+
 	public String getCode() {
 		return code;
 	}
+
 	public void setCode(String code) {
 		this.code = code;
 	}
+
 	public String getLibelle() {
 		return libelle;
 	}
+
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
 	}
+
+	public List<Produit> getProduits() {
+		return produits;
+	}
+
+	public void setProduits(List<Produit> produits) {
+		this.produits = produits;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -60,6 +75,7 @@ public class Rayon implements Serializable{
 		result = prime * result + ((libelle == null) ? 0 : libelle.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -86,11 +102,10 @@ public class Rayon implements Serializable{
 			return false;
 		return true;
 	}
+
 	@Override
 	public String toString() {
 		return "Rayon [idRayon=" + idRayon + ", code=" + code + ", libelle=" + libelle + "]";
 	}
-	
-	
-	
+
 }

@@ -8,13 +8,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-public class DetailProduit implements Serializable{
-	
-	
+public class DetailProduit implements Serializable {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idDetailProduit")
@@ -22,10 +22,12 @@ public class DetailProduit implements Serializable{
 	@Temporal(TemporalType.DATE)
 	private Date dateCreation;
 	@Temporal(TemporalType.DATE)
-	private Date  DerniereModification;
+	private Date DerniereModification;
 	private CategorieProduit categorieProduit;
-	
-	
+
+	@OneToOne(mappedBy = "detailProduit")
+	private Produit produit;
+
 	public DetailProduit(Long idDetailProduit, Date dateCreation, Date derniereModification,
 			CategorieProduit categorieProduit) {
 		super();
@@ -34,39 +36,51 @@ public class DetailProduit implements Serializable{
 		DerniereModification = derniereModification;
 		this.categorieProduit = categorieProduit;
 	}
-	
-	
-	
+
 	public DetailProduit() {
 		super();
 	}
 
-
-
 	public Long getIdDetailProduit() {
 		return idDetailProduit;
 	}
+
 	public void setIdDetailProduit(Long idDetailProduit) {
 		this.idDetailProduit = idDetailProduit;
 	}
+
 	public Date getDateCreation() {
 		return dateCreation;
 	}
+
 	public void setDateCreation(Date dateCreation) {
 		this.dateCreation = dateCreation;
 	}
+
 	public Date getDerniereModification() {
 		return DerniereModification;
 	}
+
 	public void setDerniereModification(Date derniereModification) {
 		DerniereModification = derniereModification;
 	}
+
 	public CategorieProduit getCategorieProduit() {
 		return categorieProduit;
 	}
+
 	public void setCategorieProduit(CategorieProduit categorieProduit) {
 		this.categorieProduit = categorieProduit;
 	}
+
+	public Produit getProduit() {
+		return produit;
+	}
+
+	public void setProduit(Produit produit) {
+		this.produit = produit;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -77,6 +91,7 @@ public class DetailProduit implements Serializable{
 		result = prime * result + ((idDetailProduit == null) ? 0 : idDetailProduit.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -105,13 +120,11 @@ public class DetailProduit implements Serializable{
 			return false;
 		return true;
 	}
+
 	@Override
 	public String toString() {
 		return "DetailProduit [idDetailProduit=" + idDetailProduit + ", dateCreation=" + dateCreation
 				+ ", DerniereModification=" + DerniereModification + ", categorieProduit=" + categorieProduit + "]";
 	}
-	
-	
-	
 
 }
