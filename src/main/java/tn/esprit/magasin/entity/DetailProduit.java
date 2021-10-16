@@ -13,8 +13,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-public class DetailProduit implements Serializable {
-
+public class DetailProduit implements Serializable{
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idDetailProduit")
@@ -40,6 +40,7 @@ public class DetailProduit implements Serializable {
 	public DetailProduit() {
 		super();
 	}
+
 
 	public Long getIdDetailProduit() {
 		return idDetailProduit;

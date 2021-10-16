@@ -35,7 +35,7 @@ public class Client implements Serializable {
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "client")
 	private List<Facture> factures;
-
+  
 	public Client(Long idClient, String nom, String prenom, Date dateNaissance, String email, String password,
 			CategorieClient categorieClient, Profession profession) {
 		super();
@@ -52,6 +52,7 @@ public class Client implements Serializable {
 	public Client() {
 		super();
 	}
+
 
 	public Long getIdClient() {
 		return idClient;

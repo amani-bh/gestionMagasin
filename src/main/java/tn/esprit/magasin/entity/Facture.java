@@ -13,7 +13,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-public class Facture implements Serializable {
+public class Facture implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,6 +40,7 @@ public class Facture implements Serializable {
 	public Facture() {
 		super();
 	}
+
 
 	public Long getIdFacture() {
 		return idFacture;

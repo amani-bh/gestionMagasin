@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,6 +14,7 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Rayon implements Serializable {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idRayon")
@@ -33,6 +35,7 @@ public class Rayon implements Serializable {
 	public Rayon() {
 		super();
 	}
+
 
 	public Long getIdRayon() {
 		return idRayon;

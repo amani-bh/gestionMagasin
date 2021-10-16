@@ -24,6 +24,7 @@ public class DetailFacture implements Serializable {
 	@ManyToOne
 	private Produit produit;
 
+
 	public DetailFacture(Long idDetailFacture, int qte, float prixTotal, int pourcentageRemise, float montantRemise) {
 		super();
 		this.idDetailFacture = idDetailFacture;
