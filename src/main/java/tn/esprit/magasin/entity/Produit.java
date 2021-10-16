@@ -1,5 +1,7 @@
 package tn.esprit.magasin.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,7 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Produit {
+public class Produit implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idProduit")
@@ -15,6 +17,8 @@ public class Produit {
 	private String code;
 	private String libelle;
 	private float prixUnitaire;
+	
+	
 	public Produit(Long idProduit, String code, String libelle, float prixUnitaire) {
 		super();
 		this.idProduit = idProduit;
@@ -22,6 +26,15 @@ public class Produit {
 		this.libelle = libelle;
 		this.prixUnitaire = prixUnitaire;
 	}
+	
+	
+	
+	public Produit() {
+		super();
+	}
+
+
+
 	public Long getIdProduit() {
 		return idProduit;
 	}

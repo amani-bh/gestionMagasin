@@ -1,5 +1,6 @@
 package tn.esprit.magasin.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -11,7 +12,9 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-public class Facture {
+public class Facture implements Serializable{
+	
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idFacture")
@@ -32,6 +35,15 @@ public class Facture {
 		this.dateFacture = dateFacture;
 		this.active = active;
 	}
+	
+	
+	
+	public Facture() {
+		super();
+	}
+
+
+
 	public Long getIdFacture() {
 		return idFacture;
 	}

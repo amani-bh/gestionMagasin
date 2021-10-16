@@ -1,4 +1,6 @@
 package tn.esprit.magasin.entity;
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -6,19 +8,30 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Fournisseur {
+public class Fournisseur implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idFournisseur")
 	private Long idFournisseur;
 	private String code;
 	private String libelle;
+	
+	
 	public Fournisseur(Long idFournisseur, String code, String libelle) {
 		super();
 		this.idFournisseur = idFournisseur;
 		this.code = code;
 		this.libelle = libelle;
 	}
+	
+	
+	
+	public Fournisseur() {
+		super();
+	}
+
+
+
 	public Long getIdFournisseur() {
 		return idFournisseur;
 	}
