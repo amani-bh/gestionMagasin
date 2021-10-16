@@ -1,15 +1,12 @@
 package tn.esprit.magasin.entity;
 
 import java.io.Serializable;
-import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 
 @Entity
 public class Fournisseur implements Serializable {
@@ -19,9 +16,6 @@ public class Fournisseur implements Serializable {
 	private Long idFournisseur;
 	private String code;
 	private String libelle;
-
-	@ManyToMany(mappedBy = "fournisseurs", cascade = CascadeType.ALL)
-	private Set<Produit> produits;
 
 	public Fournisseur(Long idFournisseur, String code, String libelle) {
 		super();
