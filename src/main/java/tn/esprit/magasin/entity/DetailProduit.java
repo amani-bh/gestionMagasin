@@ -125,7 +125,9 @@ public class DetailProduit implements Serializable{
 	@Override
 	public String toString() {
 		return "DetailProduit [idDetailProduit=" + idDetailProduit + ", dateCreation=" + dateCreation
-				+ ", DerniereModification=" + DerniereModification + ", categorieProduit=" + categorieProduit + "]";
+				+ ", DerniereModification=" + DerniereModification + ", categorieProduit=" + categorieProduit
+				+ ", produit=" + produit + "]";
 	}
+
 
 }
