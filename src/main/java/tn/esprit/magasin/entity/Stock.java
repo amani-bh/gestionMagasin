@@ -119,7 +119,8 @@ public class Stock implements Serializable {
 	@Override
 	public String toString() {
 		return "Stock [idStock=" + idStock + ", qte=" + qte + ", qteMin=" + qteMin + ", libelleStock=" + libelleStock
-				+ "]";
+				+ ", produits=" + produits + "]";
 	}
+
 
 }
