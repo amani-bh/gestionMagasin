@@ -108,7 +108,8 @@ public class Rayon implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Rayon [idRayon=" + idRayon + ", code=" + code + ", libelle=" + libelle + "]";
+		return "Rayon [idRayon=" + idRayon + ", code=" + code + ", libelle=" + libelle + ", produits=" + produits + "]";
 	}
+
 
 }

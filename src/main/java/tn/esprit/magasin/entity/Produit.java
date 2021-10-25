@@ -168,7 +168,10 @@ public class Produit implements Serializable {
 	@Override
 	public String toString() {
 		return "Produit [idProduit=" + idProduit + ", code=" + code + ", libelle=" + libelle + ", prixUnitaire="
-				+ prixUnitaire + "]";
+				+ prixUnitaire + ", detailProduit=" + detailProduit + ", fournisseurs=" + fournisseurs + ", rayon="
+				+ rayon + ", detailFactures=" + detailFactures + ", stock=" + stock + "]";
 	}
+
+	
 
 }
