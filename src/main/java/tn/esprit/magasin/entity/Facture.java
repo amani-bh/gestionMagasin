@@ -2,13 +2,16 @@ package tn.esprit.magasin.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -25,6 +28,9 @@ public class Facture implements Serializable{
 	private Date dateFacture;
 	private Boolean active;
 
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="facture")
+	private List <DetailFacture> detailFactures;
+	
 	@ManyToOne
 	private Client client;
 
@@ -90,6 +96,16 @@ public class Facture implements Serializable{
 		this.client = client;
 	}
 
+	
+	
+	public List<DetailFacture> getDetailFactures() {
+		return detailFactures;
+	}
+
+	public void setDetailFactures(List<DetailFacture> detailFactures) {
+		this.detailFactures = detailFactures;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -136,7 +152,9 @@ public class Facture implements Serializable{
 	@Override
 	public String toString() {
 		return "Facture [idFacture=" + idFacture + ", montantRemise=" + montantRemise + ", montantFacture="
-				+ montantFacture + ", dateFacture=" + dateFacture + ", active=" + active + "]";
+				+ montantFacture + ", dateFacture=" + dateFacture + ", active=" + active + ", detailFactures="
+				+ detailFactures + ", client=" + client + "]";
 	}
+
 
 }

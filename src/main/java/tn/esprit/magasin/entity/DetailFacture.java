@@ -23,6 +23,8 @@ public class DetailFacture implements Serializable {
 
 	@ManyToOne
 	private Produit produit;
+	@ManyToOne
+	private Facture facture;
 
 
 	public DetailFacture(Long idDetailFacture, int qte, float prixTotal, int pourcentageRemise, float montantRemise) {
@@ -85,6 +87,15 @@ public class DetailFacture implements Serializable {
 	public void setProduit(Produit produit) {
 		this.produit = produit;
 	}
+	
+
+	public Facture getFacture() {
+		return facture;
+	}
+
+	public void setFacture(Facture facture) {
+		this.facture = facture;
+	}
 
 	@Override
 	public int hashCode() {
@@ -126,7 +137,10 @@ public class DetailFacture implements Serializable {
 	@Override
 	public String toString() {
 		return "DetailFacture [idDetailFacture=" + idDetailFacture + ", qte=" + qte + ", prixTotal=" + prixTotal
-				+ ", pourcentageRemise=" + pourcentageRemise + ", montantRemise=" + montantRemise + "]";
+				+ ", pourcentageRemise=" + pourcentageRemise + ", montantRemise=" + montantRemise + ", produit="
+				+ produit + ", facture=" + facture + "]";
 	}
+
+	
 
 }
