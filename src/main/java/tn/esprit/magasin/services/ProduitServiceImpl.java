@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import lombok.extern.slf4j.Slf4j;
 import tn.esprit.magasin.entity.CategorieProduit;
 import tn.esprit.magasin.entity.DetailProduit;
 import tn.esprit.magasin.entity.Produit;
@@ -14,6 +15,7 @@ import tn.esprit.magasin.repositories.IProduitRepository;
 import tn.esprit.magasin.repositories.IRayonRepository;
 import tn.esprit.magasin.repositories.IStockRepository;
 
+@Slf4j
 @Service
 public class ProduitServiceImpl implements IProduitService{
 	@Autowired

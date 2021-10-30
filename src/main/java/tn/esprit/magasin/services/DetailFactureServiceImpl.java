@@ -5,9 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import lombok.extern.slf4j.Slf4j;
 import tn.esprit.magasin.entity.DetailFacture;
 import tn.esprit.magasin.repositories.IDetailFactureRepository;
 
+@Slf4j
 @Service
 public class DetailFactureServiceImpl implements IDetailFactureService {
 
