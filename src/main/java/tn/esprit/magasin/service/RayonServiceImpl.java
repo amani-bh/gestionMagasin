@@ -3,18 +3,26 @@ package tn.esprit.magasin.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import lombok.extern.slf4j.Slf4j;
 import tn.esprit.magasin.entity.Rayon;
 import tn.esprit.magasin.repository.RayonRepository;
 
-public class RayonServiceImpl  implements RayonService {
-	
+@Service
+@Slf4j
+public class RayonServiceImpl implements RayonService {
+
 	@Autowired
 	RayonRepository rayonRepo;
 
 	@Override
 	public List<Rayon> retrieveAllRayons() {
-		return rayonRepo.findAll();
+		List<Rayon> rayons = (List<Rayon>) rayonRepo.findAll();
+		for (Rayon rayon : rayons) {
+			log.info("rayon:" + rayon);
+		}
+		return rayons;
 	}
 
 	@Override

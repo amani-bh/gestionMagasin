@@ -3,18 +3,26 @@ package tn.esprit.magasin.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import lombok.extern.slf4j.Slf4j;
 import tn.esprit.magasin.entity.Fournisseur;
 import tn.esprit.magasin.repository.FournisseurRepository;
 
+@Service
+@Slf4j
 public class FournisseurServiceImpl implements FournisseurService {
-	
+
 	@Autowired
 	FournisseurRepository fournisseurRepo;
 
 	@Override
 	public List<Fournisseur> retrieveAllFournisseurs() {
-		return fournisseurRepo.findAll();
+		List<Fournisseur> fournisseurs = (List<Fournisseur>) fournisseurRepo.findAll();
+		for (Fournisseur fournisseur : fournisseurs) {
+			log.info("fournisseur:" + fournisseur);
+		}
+		return fournisseurs;
 	}
 
 	@Override

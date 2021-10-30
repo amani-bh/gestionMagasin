@@ -5,7 +5,7 @@ import java.util.List;
 import tn.esprit.magasin.entity.Client;
 
 public interface ClientService {
-	List<Client> retrieveAllClients(List<Client> c);
+	List<Client> retrieveAllClients();
 
 	Client addClient(Client c);
 
