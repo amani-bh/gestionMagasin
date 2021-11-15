@@ -35,7 +35,7 @@ assertTrue(fr.getLibelle().length()>0);
 fournisseurService.deleteFournisseur(fr.getIdFournisseur());
 		
 	}
-	@Test
+	@Test	
 	public void TestDeleteFournisseur() throws ParseException {
 		Fournisseur f1 =new Fournisseur();
 		f1.setCode("45ezae5");

@@ -1,6 +1,7 @@
 package tn.esprit.magasin.controllers;
 
 import tn.esprit.magasin.entity.Client;
+import tn.esprit.magasin.entity.Profession;
 
 import java.util.List;
 
@@ -49,5 +50,12 @@ clientService.deleteClient(clientId);
 public Client modifyClient(@RequestBody Client client) {
 return clientService.updateClient(client);
 }
+//http://localhost:8082/SpringMVC/client/retrieve-all-clients-By-Profession
+@GetMapping("/retrieve-all-clients-By-Profession/{profession}")
+@ResponseBody
+public  List<Client>  listClient(@PathVariable("profession") Profession profession) {
+return clientService.retrieveClientsByProfession(profession);
+}
+
 
 }

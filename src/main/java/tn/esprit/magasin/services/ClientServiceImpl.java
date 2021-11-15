@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import tn.esprit.magasin.entity.Client;
+import tn.esprit.magasin.entity.Profession;
 import tn.esprit.magasin.repositories.IClientRepository;
 
 @Slf4j
@@ -43,6 +44,12 @@ public class ClientServiceImpl implements IClientService {
 	public Client retrieveClient(Long id) {
 
 		return clientRepository.findById(id).orElse(null);
+	}
+
+	@Override
+	public List<Client> retrieveClientsByProfession(Profession profession) {
+		
+		return clientRepository.findByProfession(profession);
 	}
 
 
