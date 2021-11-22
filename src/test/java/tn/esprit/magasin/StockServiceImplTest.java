@@ -30,6 +30,7 @@ public class StockServiceImplTest {
 	s.setQte(10);
 	s.setQteMin(100);
 	Stock savedStock= stockService.addStock(s);
+
 	//assertEquals(expected+1, stockService.retrieveAllStocks().size());
 	assertNotNull(savedStock.getLibelleStock());
 	stockService.deleteStock(savedStock.getIdStock());
