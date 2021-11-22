@@ -11,4 +11,11 @@ public interface IFactureService {
 	void cancelFacture(Long id);
 	
 	Facture retrieveFacture(Long id);
+	
+	Facture addFacture(Facture f, Long idClient);
+	
+	Facture updateFacture(Facture f);
+	
+	List<Facture> getFacturesByClient(Long idClient);
+
 }
