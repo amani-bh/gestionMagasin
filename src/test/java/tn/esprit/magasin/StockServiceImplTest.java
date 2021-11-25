@@ -10,8 +10,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import tn.esprit.magasin.entities.Stock;
+import tn.esprit.magasin.services.ProduitServiceImpl;
 import tn.esprit.magasin.services.StockServiceImpl;
 
 @RunWith(SpringRunner.class)
@@ -20,6 +22,9 @@ public class StockServiceImplTest {
 
 	@Autowired
 	StockServiceImpl stockService;
+	
+	@Autowired
+	ProduitServiceImpl produitService;
 
 	@Test
 	public void testAddStock() {
@@ -45,6 +50,12 @@ public class StockServiceImplTest {
 		stockService.deleteStock(savedStock.getIdStock());
 		Stock deletedStock = stockService.retrieveStock(savedStock.getIdStock());
 		assertNull(deletedStock);
-
+	}
+	
+	@Test
+	@Transactional
+	public void testStock() {
+	
+		stockService.assignProduitToStock((long)1, 1L);
 	}
 }

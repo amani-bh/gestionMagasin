@@ -45,6 +45,10 @@ public class ProduitServiceImpl implements IProduitService {
 		p.setStock(stockRepo.findById(idStock).orElse(null));
 		p.setDetailProduit(dp);
 		return produitRepository.save(p);
+		// rayon r= rayonRepo.findById(idRayon).orElse(null);
+		//stock s= stockRepo.findById(idStock).orElse(null);
+		//p.setStock(s);
+		//p.setRayon(r)
 	}
 
 	@Override

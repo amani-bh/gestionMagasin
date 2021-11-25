@@ -14,4 +14,9 @@ public interface IStockService {
 	Stock retrieveStock(Long id);
 
 	void deleteStock(Long id);
+	
+	Stock getlibelleStock(String libelleStock);
+
+	void assignProduitToStock(Long idProduit, Long idStock);
+
 }

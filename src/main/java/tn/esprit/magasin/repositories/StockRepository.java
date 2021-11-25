@@ -7,5 +7,6 @@ import tn.esprit.magasin.entities.Stock;
 
 @Repository
 public interface StockRepository extends JpaRepository<Stock, Long> {
+	Stock findByLibelleStock(String libelleStock);
 
 }
