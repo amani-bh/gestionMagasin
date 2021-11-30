@@ -10,6 +10,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -34,10 +38,15 @@ public class DetailFacture implements Serializable {
 	private float prixTotal;
 	private int pourcentageRemise;
 	private float montantRemise;
+	@Temporal(TemporalType.DATE)
+	private Date createdAt;
 
+	@JsonIgnore
 	@ManyToOne
 	private Produit produit;
+	
 	@ManyToOne
+	@JsonIgnore
 	private Facture facture;
 
 	public DetailFacture() {
