@@ -1,4 +1,4 @@
-package tn.spring.magasin.utils;
+package tn.esprit.magasin.utils;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
