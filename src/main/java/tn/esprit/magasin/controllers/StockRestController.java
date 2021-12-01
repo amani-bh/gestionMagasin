@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import tn.esprit.magasin.entities.Stock;
+import tn.esprit.magasin.entity.Stock;
 import tn.esprit.magasin.services.IStockService;
 
 @CrossOrigin(origins = "http://localhost:4200")

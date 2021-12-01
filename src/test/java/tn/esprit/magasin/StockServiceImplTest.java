@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import tn.esprit.magasin.entities.Stock;
+import tn.esprit.magasin.entity.Stock;
 import tn.esprit.magasin.services.ProduitServiceImpl;
 import tn.esprit.magasin.services.StockServiceImpl;
 

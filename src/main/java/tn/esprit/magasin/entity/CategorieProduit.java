@@ -1,4 +1,4 @@
-package tn.esprit.magasin.entities;
+package tn.esprit.magasin.entity;
 
 public enum CategorieProduit {
 Electromenager,Alimentaire,Quincaillerie

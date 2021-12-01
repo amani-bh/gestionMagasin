@@ -27,7 +27,7 @@ import org.springframework.http.ResponseEntity;
 import tn.esprit.magasin.entity.CategorieClient;
 import tn.esprit.magasin.entity.Facture;
 import tn.esprit.magasin.services.IFactureService;
-import tn.spring.magasin.utils.GeneratePdf;
+//import tn.spring.magasin.utils.GeneratePdf;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -85,20 +85,20 @@ public class FactureRestController {
 	return  factureService.getChiffreAffaireParCategorieClient(categorieClient, startDate, endDate);
 	}
 	
-	@GetMapping("/report/{client-id}")
-	@ResponseBody
-	public ResponseEntity<InputStreamResource> Report(@PathVariable("client-id") long clientId ) throws IOException {
-        List<Facture> list = (List<Facture>) factureService.getFacturesByClient(clientId);
+	//@GetMapping("/report/{client-id}")
+	//@ResponseBody
+	//public ResponseEntity<InputStreamResource> Report(@PathVariable("client-id") long clientId ) throws IOException {
+      //  List<Facture> list = (List<Facture>) factureService.getFacturesByClient(clientId);
 
-        ByteArrayInputStream bis = GeneratePdf.Report(list);
+       // ByteArrayInputStream bis = GeneratePdf.Report(list);
 
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Content-Disposition", "inline; filename=factures.pdf");
+        //HttpHeaders headers = new HttpHeaders();
+       // headers.add("Content-Disposition", "inline; filename=factures.pdf");
 
-        return ResponseEntity
-                .ok()
-                .headers(headers)
-                .contentType(MediaType.APPLICATION_PDF)
-                .body(new InputStreamResource(bis));
-    }
+        //return ResponseEntity
+          //      .ok()
+           //     .headers(headers)
+             //   .contentType(MediaType.APPLICATION_PDF)
+             //   .body(new InputStreamResource(bis));
+    //}
 }

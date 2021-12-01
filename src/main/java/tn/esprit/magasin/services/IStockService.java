@@ -2,7 +2,7 @@ package tn.esprit.magasin.services;
 
 import java.util.List;
 
-import tn.esprit.magasin.entities.Stock;
+import tn.esprit.magasin.entity.Stock;
 
 public interface IStockService {
 	List<Stock> retrieveAllStocks();

@@ -6,15 +6,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
-import tn.esprit.magasin.entities.Rayon;
-import tn.esprit.magasin.repositories.RayonRepository;
+import tn.esprit.magasin.entity.Rayon;
+import tn.esprit.magasin.repositories.IRayonRepository;
 
 @Service
 @Slf4j
 public class RayonServiceImpl implements IRayonService {
 
 	@Autowired
-	RayonRepository rayonRepo;
+	IRayonRepository rayonRepo;
 
 	@Override
 	public List<Rayon> retrieveAllRayons() {

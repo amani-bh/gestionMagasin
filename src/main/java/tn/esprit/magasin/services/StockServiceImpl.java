@@ -5,22 +5,21 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import tn.esprit.magasin.entities.Produit;
-
 import lombok.extern.slf4j.Slf4j;
-import tn.esprit.magasin.entities.Stock;
-import tn.esprit.magasin.repositories.ProduitRepository;
-import tn.esprit.magasin.repositories.StockRepository;
+import tn.esprit.magasin.entity.Produit;
+import tn.esprit.magasin.entity.Stock;
+import tn.esprit.magasin.repositories.IProduitRepository;
+import tn.esprit.magasin.repositories.IStockRepository;
 
 @Service
 @Slf4j
 public class StockServiceImpl implements IStockService {
 
 	@Autowired
-	StockRepository stockRepository;
+	IStockRepository stockRepository;
 
 	@Autowired
-	ProduitRepository produitRepository;
+	IProduitRepository produitRepository;
 
 	@Override
 	public List<Stock> retrieveAllStocks() {

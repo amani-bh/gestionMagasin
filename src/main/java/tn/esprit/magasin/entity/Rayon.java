@@ -1,4 +1,4 @@
-package tn.esprit.magasin.entities;
+package tn.esprit.magasin.entity;
 
 import java.io.Serializable;
 import java.util.List;
@@ -10,10 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -29,30 +26,17 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 @EqualsAndHashCode
-public class Produit implements Serializable {
+public class Rayon implements Serializable {
 	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idProduit")
-	private Long idProduit;
+	@Column(name = "idRayon")
+	private Long idRayon;
 	private String code;
 	private String libelle;
-	private float prixUnitaire;
 
-	@OneToOne
-	private DetailProduit detailProduit;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "rayon")
+	private List<Produit> produits;
 
-	@ManyToMany(cascade = CascadeType.ALL)
-	private List<Fournisseur> fournisseurs;
-
-	@ManyToOne
-	private Rayon rayon;
-
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "produit")
-	private List<DetailFacture> detailFactures;
-
-	@ManyToOne
-	private Stock stock;
-
-	
 }

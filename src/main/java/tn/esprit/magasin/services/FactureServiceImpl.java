@@ -1,5 +1,6 @@
 package tn.esprit.magasin.services;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +39,7 @@ public class FactureServiceImpl implements IFactureService{
 		return repo.findById(id).orElse(null);
 	}
 
-	@Override
+	
 	public Facture addFacture(Facture f, Long idClient) {
 		f.setClient(repoClient.getById(idClient));;
 		return repo.save(f);
@@ -58,6 +59,12 @@ public class FactureServiceImpl implements IFactureService{
 			Date startDate, Date endDate) {
 				return repo.calculer(categorieClient, startDate, endDate);
 		
+	}
+
+	@Override
+	public Facture addFacture(Long idFacture, Long idClient) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

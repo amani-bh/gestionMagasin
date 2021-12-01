@@ -1,16 +1,16 @@
-package tn.esprit.magasin.entities;
+package tn.esprit.magasin.entity;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -26,20 +26,18 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 @EqualsAndHashCode
-public class DetailProduit implements Serializable {
+public class Stock implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idDetailProduit")
-	private Long idDetailProduit;
-	@Temporal(TemporalType.DATE)
-	private Date dateCreation;
-	@Temporal(TemporalType.DATE)
-	private Date DerniereModification;
-	private CategorieProduit categorieProduit;
+	@Column(name = "idStock")
+	private Long idStock;
+	private int qte;
+	private int qteMin;
+	private String libelleStock;
 
-	@OneToOne(mappedBy = "detailProduit")
-	private Produit produit;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "stock")
+	private List<Produit> produits;
 
 }

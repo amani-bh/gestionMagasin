@@ -2,7 +2,7 @@ package tn.esprit.magasin.services;
 
 import java.util.List;
 
-import tn.esprit.magasin.entities.Rayon;
+import tn.esprit.magasin.entity.Rayon;
 
 public interface IRayonService {
 	List<Rayon> retrieveAllRayons();
