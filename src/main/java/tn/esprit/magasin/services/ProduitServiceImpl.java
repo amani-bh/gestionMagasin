@@ -7,53 +7,48 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
-import tn.esprit.magasin.entities.DetailProduit;
-import tn.esprit.magasin.entities.Produit;
-import tn.esprit.magasin.repositories.DetailProduitRepository;
-import tn.esprit.magasin.repositories.ProduitRepository;
-import tn.esprit.magasin.repositories.RayonRepository;
-import tn.esprit.magasin.repositories.StockRepository;
+import tn.esprit.magasin.entity.CategorieProduit;
+import tn.esprit.magasin.entity.DetailProduit;
+import tn.esprit.magasin.entity.Produit;
+import tn.esprit.magasin.repositories.IDetailProduitRepository;
+import tn.esprit.magasin.repositories.IProduitRepository;
+import tn.esprit.magasin.repositories.IRayonRepository;
+import tn.esprit.magasin.repositories.IStockRepository;
 
-@Service
 @Slf4j
-public class ProduitServiceImpl implements IProduitService {
-
+@Service
+public class ProduitServiceImpl implements IProduitService{
 	@Autowired
-	ProduitRepository produitRepository;
+	IProduitRepository repo;
 	@Autowired
-	StockRepository stockRepo;
+	IStockRepository stockRepo;
 	@Autowired
-	RayonRepository rayonRepo;
+	IRayonRepository rayonRepo;
 	@Autowired
-	DetailProduitRepository detailRepo;
+	IDetailProduitRepository detailRepo;
+	
 
 	@Override
 	public List<Produit> retrieveAllProduits() {
-		List<Produit> produits = (List<Produit>) produitRepository.findAll();
-		
-		return produits;
+		return repo.findAll();
 	}
 
 	@Override
 	public Produit addProduit(Produit p, Long idRayon, Long idStock) {
-		DetailProduit dp = new DetailProduit();
-		Date d = new Date();
+		DetailProduit dp=new DetailProduit();
+		Date d=new Date();
 		dp.setDateCreation(d);
-		// dp.setCategorieProduit(CategorieProduit.Alimentaire);
+		//dp.setCategorieProduit(CategorieProduit.Alimentaire);
 		detailRepo.save(dp);
 		p.setRayon(rayonRepo.findById(idRayon).orElse(null));
 		p.setStock(stockRepo.findById(idStock).orElse(null));
 		p.setDetailProduit(dp);
-		return produitRepository.save(p);
-		// rayon r= rayonRepo.findById(idRayon).orElse(null);
-		//stock s= stockRepo.findById(idStock).orElse(null);
-		//p.setStock(s);
-		//p.setRayon(r)
+		return repo.save(p);
 	}
 
 	@Override
 	public Produit retrieveProduit(Long id) {
-		return produitRepository.findById(id).orElse(null);
+		return repo.findById(id).orElse(null);
 	}
 
 }

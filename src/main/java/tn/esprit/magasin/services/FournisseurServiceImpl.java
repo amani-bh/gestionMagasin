@@ -6,41 +6,40 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
-import tn.esprit.magasin.entities.Fournisseur;
-import tn.esprit.magasin.repositories.FournisseurRepository;
+import tn.esprit.magasin.entity.Fournisseur;
+import tn.esprit.magasin.repositories.IFournisseurRepository;
 
-@Service
 @Slf4j
-public class FournisseurServiceImpl implements IFournisseurService {
-
+@Service
+public class FournisseurServiceImpl implements IFournisseurService{
+	
 	@Autowired
-	FournisseurRepository fournisseurRepo;
+	IFournisseurRepository repo;
+	
 
 	@Override
 	public List<Fournisseur> retrieveAllFournisseurs() {
-		List<Fournisseur> fournisseurs = (List<Fournisseur>) fournisseurRepo.findAll();
-		
-		return fournisseurs;
+		return repo.findAll();
 	}
 
 	@Override
 	public Fournisseur addFournisseur(Fournisseur f) {
-		return fournisseurRepo.save(f);
+		return repo.save(f);
 	}
 
 	@Override
 	public void deleteFournisseur(Long id) {
-		fournisseurRepo.deleteById(id);
+		repo.deleteById(id);
 	}
 
 	@Override
 	public Fournisseur updateFournisseur(Fournisseur f) {
-		return fournisseurRepo.save(f);
+		return repo.save(f);
 	}
 
 	@Override
 	public Fournisseur retrieveFournisseur(Long id) {
-		return fournisseurRepo.findById(id).orElse(null);
+		return repo.findById(id).orElse(null);
 	}
 
 }

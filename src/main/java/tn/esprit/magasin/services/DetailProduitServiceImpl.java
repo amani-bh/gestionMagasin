@@ -6,41 +6,39 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
-import tn.esprit.magasin.entities.DetailProduit;
-import tn.esprit.magasin.repositories.DetailProduitRepository;
+import tn.esprit.magasin.entity.DetailProduit;
+import tn.esprit.magasin.repositories.IDetailProduitRepository;
 
-@Service
 @Slf4j
-public class DetailProduitServiceImpl implements IDetailProduitService {
+@Service
+public class DetailProduitServiceImpl implements IDetailProduitService{
 
 	@Autowired
-	DetailProduitRepository detailProduitRepo;
-
+	IDetailProduitRepository repo;
+	
 	@Override
 	public List<DetailProduit> retrieveAllDetailProduits() {
-		List<DetailProduit> detailProduits = (List<DetailProduit>) detailProduitRepo.findAll();
-	
-		return detailProduits;
+		return repo.findAll();
 	}
 
 	@Override
 	public DetailProduit addDetailProduit(DetailProduit dp) {
-		return detailProduitRepo.save(dp);
+		return repo.save(dp);
 	}
 
 	@Override
 	public void deleteDetailProduit(Long id) {
-		detailProduitRepo.deleteById(id);
+		repo.deleteById(id);
 	}
 
 	@Override
 	public DetailProduit updateDetailFacture(DetailProduit dp) {
-		return detailProduitRepo.save(dp);
+		return repo.save(dp);
 	}
 
 	@Override
 	public DetailProduit retrieveDetailProduit(Long id) {
-		return detailProduitRepo.findById(id).orElse(null);
+		return repo.findById(id).orElse(null);
 	}
 
 }
