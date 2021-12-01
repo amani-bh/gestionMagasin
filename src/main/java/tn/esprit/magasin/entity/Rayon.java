@@ -15,15 +15,17 @@ import javax.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @ToString
 @EqualsAndHashCode
-@AllArgsConstructor
 public class Rayon implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -36,9 +38,5 @@ public class Rayon implements Serializable {
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "rayon")
 	private List<Produit> produits;
-
-	public Rayon() {
-		super();
-	}
 
 }

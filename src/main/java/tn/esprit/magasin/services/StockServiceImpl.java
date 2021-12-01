@@ -6,39 +6,67 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
+import tn.esprit.magasin.entity.Produit;
 import tn.esprit.magasin.entity.Stock;
+import tn.esprit.magasin.repositories.IProduitRepository;
 import tn.esprit.magasin.repositories.IStockRepository;
 
-@Slf4j
 @Service
-public class StockServiceImpl implements IStockService{
+@Slf4j
+public class StockServiceImpl implements IStockService {
+
 	@Autowired
-	IStockRepository repo;
+	IStockRepository stockRepository;
+
+	@Autowired
+	IProduitRepository produitRepository;
 
 	@Override
 	public List<Stock> retrieveAllStocks() {
-		return repo.findAll();
+		List<Stock> stocks = (List<Stock>) stockRepository.findAll();
+		// for (Stock stock : stocks) {
+		// log.info("stock:" + stock);
+		// }
+		return stocks;
 	}
 
 	@Override
 	public Stock addStock(Stock s) {
-		return repo.save(s);
+		log.info("stock ajoute");
+		return stockRepository.save(s);
+
 	}
 
 	@Override
 	public Stock updateStock(Stock s) {
-		return repo.save(s);
+		return stockRepository.save(s);
 	}
 
 	@Override
 	public Stock retrieveStock(Long id) {
-		return repo.findById(id).orElse(null);
+		return stockRepository.findById(id).orElse(null);
 	}
 
 	@Override
 	public void deleteStock(Long id) {
-		repo.deleteById(id);
-		
+		log.info("stock supprime");
+		stockRepository.deleteById(id);
+
+	}
+
+	@Override
+	public Stock getlibelleStock(String libelleStock) {
+		return stockRepository.findByLibelleStock(libelleStock);
+	}
+
+	@Override
+	public void assignProduitToStock(Long idProduit, Long idStock) {
+		Produit p = produitRepository.findById(idProduit).orElse(null);
+		Stock s = stockRepository.findById(idStock).orElse(null);
+		p.setStock(s);
+		produitRepository.save(p);
+		log.info("assign Produit To Stock added successfully!");
+
 	}
 
 }

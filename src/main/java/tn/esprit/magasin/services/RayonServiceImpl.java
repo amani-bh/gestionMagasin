@@ -7,41 +7,40 @@ import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
 import tn.esprit.magasin.entity.Rayon;
-import tn.esprit.magasin.entity.Stock;
 import tn.esprit.magasin.repositories.IRayonRepository;
 
-@Slf4j
 @Service
-public class RayonServiceImpl implements IRayonService{
-	
+@Slf4j
+public class RayonServiceImpl implements IRayonService {
+
 	@Autowired
-	IRayonRepository repo;
+	IRayonRepository rayonRepo;
 
 	@Override
 	public List<Rayon> retrieveAllRayons() {
-		return repo.findAll();
+		List<Rayon> rayons = (List<Rayon>) rayonRepo.findAll();
+		
+		return rayons;
 	}
 
 	@Override
 	public Rayon addRayon(Rayon r) {
-		return repo.save(r);
+		return rayonRepo.save(r);
 	}
 
 	@Override
 	public void deleteRayon(Long id) {
-		repo.deleteById(id);
+		rayonRepo.deleteById(id);
 	}
 
 	@Override
 	public Rayon updateRayon(Rayon r) {
-		return repo.save(r);
+		return rayonRepo.save(r);
 	}
 
 	@Override
 	public Rayon retrieveRayon(Long id) {
-		return repo.findById(id).orElse(null);
+		return rayonRepo.findById(id).orElse(null);
 	}
-
-	
 
 }
