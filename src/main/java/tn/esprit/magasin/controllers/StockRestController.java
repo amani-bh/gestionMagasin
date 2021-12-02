@@ -61,14 +61,14 @@ public class StockRestController {
 	public void removeStock(@PathVariable("stock-id") Long stockId) {
 		stockService.deleteStock(stockId);
 	}
-	
+
 	// http://localhost:8082/SpringMVC/stock/get-stock/bca412
-		@GetMapping("/get-stock/{stock-libelle}")
-		@ApiOperation(value = "Récupérer un stock par libelle")
-		@ResponseBody
-		public Stock getStockByLibelle(@PathVariable("stock-libelle") String libelleStock) {
-			return stockService.getlibelleStock(libelleStock);
-		}
+	@GetMapping("/get-stock/{stock-libelle}")
+	@ApiOperation(value = "Récupérer un stock par libelle")
+	@ResponseBody
+	public Stock getStockByLibelle(@PathVariable("stock-libelle") String libelleStock) {
+		return stockService.getlibelleStock(libelleStock);
+	}
 
 	// http://localhost:8082/SpringMVC/stock/modify-stock
 	@PutMapping("/modify-stock")
@@ -77,5 +77,11 @@ public class StockRestController {
 	public Stock modifyStock(@RequestBody Stock stock) {
 		return stockService.updateStock(stock);
 	}
-	
+
+	// http://localhost:8082/SpringMVC/stock/retrieve-stock-produit
+	@GetMapping("/retrieve-stock-produit/{produit-id}")
+	@ResponseBody
+	List<Stock> getStocksByProduit(@PathVariable("produit-id") Long idProduit) {
+		return stockService.getStocksByProduit(idProduit);
+	}
 }

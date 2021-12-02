@@ -69,4 +69,9 @@ public class StockServiceImpl implements IStockService {
 
 	}
 
+	@Override
+	public List<Stock> getStocksByProduit(Long idProduit) {
+		return stockRepository.getQteStockByIdProduitJPQL(idProduit);
+	}
+
 }
