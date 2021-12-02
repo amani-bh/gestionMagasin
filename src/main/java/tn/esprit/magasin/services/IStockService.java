@@ -18,5 +18,7 @@ public interface IStockService {
 	Stock getlibelleStock(String libelleStock);
 
 	void assignProduitToStock(Long idProduit, Long idStock);
+	
+	List<Stock> getStocksByProduit(Long idProduit);
 
 }
