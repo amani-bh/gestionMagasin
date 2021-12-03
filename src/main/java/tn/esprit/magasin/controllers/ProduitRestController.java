@@ -29,9 +29,9 @@ public class ProduitRestController {
 	return produits;
 	}
 	
-	@GetMapping("/retrieve-detail-produit/{detailProduit-id}")
+	@GetMapping("/retrieve-produit/{produit-id}")
 	@ResponseBody
-	public Produit retrieveProduit(@PathVariable("detailProduit-id") Long detailProduitId) {
-	return produitService.retrieveProduit(detailProduitId);
+	public Produit retrieveProduit(@PathVariable("detailProduit-id") Long produitId) {
+	return produitService.retrieveProduit(produitId);
 	}
 }
