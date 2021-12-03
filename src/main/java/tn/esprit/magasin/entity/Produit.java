@@ -15,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -45,12 +47,14 @@ public class Produit implements Serializable {
 	private List<Fournisseur> fournisseurs;
 
 	@ManyToOne
+	@JsonIgnore
 	private Rayon rayon;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "produit")
 	private List<DetailFacture> detailFactures;
 
 	@ManyToOne
+	@JsonIgnore
 	private Stock stock;
 
 	public Produit() {
