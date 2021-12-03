@@ -36,8 +36,7 @@ public class ProduitServiceImpl implements IProduitService{
 	@Override
 	public Produit addProduit(Produit p, Long idRayon, Long idStock) {
 		DetailProduit dp=new DetailProduit();
-		Date d=new Date();
-		dp.setDateCreation(d);
+		dp.setDateCreation(new Date());
 		//dp.setCategorieProduit(CategorieProduit.Alimentaire);
 		detailRepo.save(dp);
 		p.setRayon(rayonRepo.findById(idRayon).orElse(null));
