@@ -41,6 +41,7 @@ public class PanierServiceImpl implements IPanierService{
 		//System.out.println(p.getListProduit().remove(repoProduit.findById(idProduit).orElse(null)));
 		p.getListProduit().remove(repoProduit.findById(idProduit).orElse(null));
 		p.setNbr(p.getNbr()-1);
+		p.setTotal(p.getTotal()-repoProduit.findById(idProduit).orElse(null).getPrixUnitaire());
 		repo.save(p);
 	}
 
