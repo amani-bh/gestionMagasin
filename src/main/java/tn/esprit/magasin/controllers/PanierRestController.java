@@ -26,10 +26,10 @@ public class PanierRestController {
 	IPanierService panierService;
 	
 
-	@GetMapping("/retrieve-panier/{panier-id}")
+	@GetMapping("/retrieve-panier/{client-id}")
 	@ResponseBody
-	public Panier retrievePanier(@PathVariable("panier-id") Long panierId) {
-	return panierService.getPanierById(panierId);
+	public Panier retrievePanier(@PathVariable("client-id") Long clientId) {
+	return panierService.getPanierById(clientId);
 	}
 	
 	@PostMapping("/add-panier/{client-id}")

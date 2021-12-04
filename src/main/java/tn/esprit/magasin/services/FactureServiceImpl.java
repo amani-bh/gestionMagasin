@@ -34,6 +34,7 @@ public class FactureServiceImpl implements IFactureService{
 
 	@Override
 	public List<Facture> retrieveAllFactures() {
+		List<Facture> list=repo.findAll();
 		return repo.findAll();
 	}
 
