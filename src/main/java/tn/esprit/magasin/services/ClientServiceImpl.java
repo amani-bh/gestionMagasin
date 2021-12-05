@@ -46,13 +46,11 @@ public class ClientServiceImpl implements IClientService {
 		return clientRepository.findById(id).orElse(null);
 	}
 
-
 	@Override
 	public List<Client> retrieveClientsByProfession(Profession profession) {
 		
 		return clientRepository.findByProfession(profession);
 	}
-
 
 
 }
