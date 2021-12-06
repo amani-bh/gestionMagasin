@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,4 +36,10 @@ public class ProduitRestController {
 	public Produit retrieveProduit(@PathVariable("detailProduit-id") Long produitId) {
 	return produitService.retrieveProduit(produitId);
 	}
+	@PostMapping("/add-produit/{stock-id}/{rayon-id}")
+	@ResponseBody
+	public Produit addProduit(@RequestBody Produit p, @PathVariable("stock-id") Long stockId,@PathVariable("rayon-id") Long rayonId ) {
+	return produitService.addProduit(p, rayonId, stockId);
+	}
+	
 }
