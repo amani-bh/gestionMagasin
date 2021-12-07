@@ -34,7 +34,7 @@ public class PanierRestController {
 	
 	@PostMapping("/add-panier/{client-id}")
 	@ResponseBody
-	public Panier addFacture(@PathVariable("client-id") Long clientId)
+	public Panier addPanier(@PathVariable("client-id") Long clientId)
 	{
 	return panierService.add( clientId) ;
 	}
