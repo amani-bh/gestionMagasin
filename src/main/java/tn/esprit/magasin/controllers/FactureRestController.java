@@ -52,7 +52,7 @@ public class FactureRestController {
 	}
 
 
-	@PostMapping("/add-facture/{client-id}")
+	@PostMapping("/add-facture/{facture-id}/{client-id}")
 	@ResponseBody
 	public Facture addFacture(@PathVariable("facture-id") Long f,@PathVariable("client-id") Long clientId)
 	{
@@ -101,4 +101,12 @@ public class FactureRestController {
                 .contentType(MediaType.APPLICATION_PDF)
                 .body(new InputStreamResource(bis));
     }
+	
+	@PostMapping("/add/{client-id}")
+	@ResponseBody
+	public Facture add(@PathVariable("client-id") Long clientId)
+	{
+		Facture f= factureService.add(clientId);
+	return f;
+	}
 }
