@@ -50,6 +50,7 @@ public class Produit implements Serializable {
 	@JsonIgnore
 	private Rayon rayon;
 
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "produit")
 	private List<DetailFacture> detailFactures;
 
