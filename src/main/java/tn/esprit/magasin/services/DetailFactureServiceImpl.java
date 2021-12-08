@@ -60,4 +60,10 @@ public class DetailFactureServiceImpl implements IDetailFactureService {
 		return repo.dashPrixDate();
 	}
 
+
+	@Override
+	public List<DetailFacture> retrieveDetailFactureByIdFacture(Long idF) {
+		return repo.findByFacture(repoFacture.findById(idF).orElse(null));
+	}
+
 }

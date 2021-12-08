@@ -20,4 +20,6 @@ public interface IDetailFactureService {
 	DetailFacture retrieveDetailFacture(Long id);
 	
 	List<Dashboard> dashPrixDate();
+	
+	List<DetailFacture> retrieveDetailFactureByIdFacture(Long idF);
 }

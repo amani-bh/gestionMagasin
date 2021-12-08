@@ -71,4 +71,9 @@ public class DetailFactureRestController {
 	return dFactureService.dashPrixDate();
 	}
 	
+	@GetMapping("/retrieve-dfacture-facture/{facture-id}")
+	@ResponseBody
+	public  List<DetailFacture> retrieveDetailFactureByFacture(@PathVariable("facture-id") Long factureId) {
+	return dFactureService.retrieveDetailFactureByIdFacture(factureId);
+	}
 }

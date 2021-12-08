@@ -10,6 +10,7 @@ import org.springframework.data.repository.query.Param;
 import tn.esprit.magasin.entity.CategorieClient;
 import tn.esprit.magasin.entity.Dashboard;
 import tn.esprit.magasin.entity.DetailFacture;
+import tn.esprit.magasin.entity.Facture;
 
 
 public interface IDetailFactureRepository extends JpaRepository<DetailFacture, Long>{
@@ -18,4 +19,5 @@ float calculerChiffreAffaireMagasin(@Param("categorieClient") CategorieClient ca
 //@Query("SELECT sum(df.prixTotal) AS Y, EXTRACT(MONTH FROM df.createdAt) AS X FROM DetailFacture df GROUP BY EXTRACT(MONTH FROM df.createdAt) ORDER BY EXTRACT(MONTH FROM df.createdAt)")
 @Query(value="SELECT sum(df.prix_total) as Y, EXTRACT(MONTH FROM df.created_at) as X FROM Detail_facture df GROUP BY EXTRACT(MONTH FROM df.created_at) ORDER BY EXTRACT(MONTH FROM df.created_at)", nativeQuery=true)
 List<Dashboard> dashPrixDate();
+List<DetailFacture> findByFacture(Facture f);
 }
