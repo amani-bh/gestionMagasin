@@ -85,7 +85,7 @@ public class StockRestController {
 		return stockService.getStocksByProduit(idProduit);
 	}
 
-	// http://localhost:8082/SpringMVC/stock/assign-produit-stock/1/11
+	// http://localhost:8082/SpringMVC/stock/assign-produit-stock
 	@GetMapping("/assign-produit-stock/{produit-id}/{stock-id}")
 	@ResponseBody
 	public void assignProduitToStock(@PathVariable("produit-id") Long idProduit,

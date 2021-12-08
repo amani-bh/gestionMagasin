@@ -15,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -51,6 +53,7 @@ public class Produit implements Serializable {
 	private List<DetailFacture> detailFactures;
 
 	@ManyToOne
+	@JsonBackReference
 	private Stock stock;
 
 	public Produit() {
