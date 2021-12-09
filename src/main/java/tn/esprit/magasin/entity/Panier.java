@@ -1,23 +1,19 @@
 package tn.esprit.magasin.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -31,38 +27,26 @@ import lombok.ToString;
 @ToString
 @EqualsAndHashCode
 @AllArgsConstructor
-public class Produit implements Serializable {
+public class Panier implements Serializable{
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idProduit")
-	private Long idProduit;
-	private String code;
-	private String libelle;
-	private float prixUnitaire;
-
+	@Column(name = "idPanier")
+	private Long idPanier;
+	private int nbr;
+	private float total;
+	@Temporal(TemporalType.DATE)
+	private Date createdAt;
+	
 	@OneToOne
-	private DetailProduit detailProduit;
-
-	@ManyToMany(cascade = CascadeType.ALL)
-	private List<Fournisseur> fournisseurs;
-
-	@ManyToOne
-	@JsonIgnore
-	private Rayon rayon;
-
-	@JsonIgnore
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "produit")
-	private List<DetailFacture> detailFactures;
-
-	@ManyToOne
-	@JsonBackReference
-
-	private Stock stock;
-
-	public Produit() {
+	private Client client;
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<Produit> ListProduit;
+	public Panier() {
 		super();
 	}
-
+	
+	
+	
 }

@@ -48,7 +48,6 @@ public class Facture implements Serializable{
 	private List <DetailFacture> detailFactures;
 	
 	@ManyToOne
-	@JsonIgnore
 	private Client client;
 
 	

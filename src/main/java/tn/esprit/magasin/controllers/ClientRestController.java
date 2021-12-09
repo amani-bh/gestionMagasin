@@ -12,6 +12,7 @@ import tn.esprit.magasin.services.IClientService;
 
 @RestController
 @RequestMapping("/client")
+@CrossOrigin("http://localhost:4200")
 public class ClientRestController {
 
 @Autowired
