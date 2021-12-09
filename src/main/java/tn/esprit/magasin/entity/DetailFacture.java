@@ -41,7 +41,6 @@ public class DetailFacture implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date createdAt;
 
-	@JsonIgnore
 	@ManyToOne
 	private Produit produit;
 	

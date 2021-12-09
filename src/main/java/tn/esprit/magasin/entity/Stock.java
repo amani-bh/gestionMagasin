@@ -12,6 +12,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -37,6 +39,7 @@ public class Stock implements Serializable {
 	private int qteMin;
 	private String libelleStock;
 
+	@JsonManagedReference
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "stock")
 	private List<Produit> produits;
 
