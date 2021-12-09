@@ -23,4 +23,5 @@ public interface IFactureService {
 	
 	float getChiffreAffaireParCategorieClient(CategorieClient categorieClient,
 			Date startDate, Date endDate);
+	public Facture add( Long idClient);
 }

@@ -37,12 +37,13 @@ public class PanierServiceImpl implements IPanierService{
 	@Override
 	public void deleteFromPanier(Long idPanier,Long idProduit) {
 		Panier p=repo.findById(idPanier).orElse(null);
-		System.out.println("tesssssssssssssssssst");
 		//System.out.println(p.getListProduit().remove(repoProduit.findById(idProduit).orElse(null)));
-		p.getListProduit().remove(repoProduit.findById(idProduit).orElse(null));
-		p.setNbr(p.getNbr()-1);
-		p.setTotal(p.getTotal()-repoProduit.findById(idProduit).orElse(null).getPrixUnitaire());
-		repo.save(p);
+		if(p.getListProduit().remove(repoProduit.findById(idProduit).orElse(null))){
+			p.setNbr(p.getNbr()-1);
+			p.setTotal(p.getTotal()-repoProduit.findById(idProduit).orElse(null).getPrixUnitaire());
+			repo.save(p);
+		}
+		
 	}
 
 

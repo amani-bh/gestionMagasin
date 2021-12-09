@@ -102,7 +102,8 @@ public class FactureServiceImpl implements IFactureService{
 		
 	}
 	
-	public Facture add(Facture f, Long idClient){
+	public Facture add( Long idClient){
+		Facture f=new Facture();
 		f.setClient(repoClient.getById(idClient));
 		f.setDateFacture(new Date());
 		f.setActive(true);
