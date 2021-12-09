@@ -11,5 +11,6 @@ import tn.esprit.magasin.entity.Profession;
 public interface IClientRepository extends JpaRepository<Client, Long>{
 
 	List<Client> findByProfession(Profession profession);
+	Client findByUserName(String userName);
 
 }

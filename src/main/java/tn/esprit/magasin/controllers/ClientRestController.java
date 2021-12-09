@@ -57,6 +57,11 @@ return clientService.updateClient(client);
 public  List<Client>  listClient(@PathVariable("profession") Profession profession) {
 return clientService.retrieveClientsByProfession(profession);
 }
+@GetMapping("/retrieve/{username}")
+@ResponseBody
+public  Client  getClient(@PathVariable("username") String username) {
+return clientService.getByUserName(username);
+}
 
 
 }

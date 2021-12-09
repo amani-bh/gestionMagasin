@@ -19,6 +19,9 @@ public interface IClientService {
 
 	Client retrieveClient(Long id);
 	
+	
 	@Query("SELECT c FROM Client c WHERE c.profession= :profession")
 	List<Client> retrieveClientsByProfession(@Param("profession") Profession profession);
+
+	Client getByUserName(String userName);
 }
