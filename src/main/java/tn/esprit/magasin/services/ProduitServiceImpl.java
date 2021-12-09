@@ -37,7 +37,7 @@ public class ProduitServiceImpl implements IProduitService{
 	public Produit addProduit(Produit p, Long idRayon, Long idStock) {
 		DetailProduit dp=new DetailProduit();
 		dp.setDateCreation(new Date());
-		//dp.setCategorieProduit(CategorieProduit.Alimentaire);
+		dp.setCategorieProduit(CategorieProduit.Alimentaire);
 		detailRepo.save(dp);
 		p.setRayon(rayonRepo.findById(idRayon).orElse(null));
 		p.setStock(stockRepo.findById(idStock).orElse(null));
@@ -48,6 +48,17 @@ public class ProduitServiceImpl implements IProduitService{
 	@Override
 	public Produit retrieveProduit(Long id) {
 		return repo.findById(id).orElse(null);
+	}
+
+	@Override
+	public Produit updateProduit(Produit p, Long idRayon, Long idStock) {
+		return repo.save(p);
+	}
+
+	@Override
+	public void deleteProduit(Long id) {
+		repo.deleteById(id);
+		
 	}
 
 }

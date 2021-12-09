@@ -32,7 +32,7 @@ public class DetailProduitServiceImpl implements IDetailProduitService{
 	}
 
 	@Override
-	public DetailProduit updateDetailFacture(DetailProduit dp) {
+	public DetailProduit updateDetailProduit(DetailProduit dp) {
 		return repo.save(dp);
 	}
 
