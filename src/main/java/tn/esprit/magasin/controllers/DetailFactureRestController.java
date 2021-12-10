@@ -59,10 +59,10 @@ public class DetailFactureRestController {
 	}
 
 
-	@PutMapping("/modify-detailFacture")
+	@PutMapping("/modify-detailFacture/{facture-id}")
 	@ResponseBody
-	public DetailFacture modifyDetailFacture(@RequestBody DetailFacture df) {
-	return dFactureService.updateDetailFacture(df);
+	public DetailFacture modifyDetailFacture(@RequestBody DetailFacture df, @PathVariable ("facture-id") Long factureId) {
+	return dFactureService.updateDetailFacture(df,factureId);
 	}
 	
 	@GetMapping("/dash-prix-date")
