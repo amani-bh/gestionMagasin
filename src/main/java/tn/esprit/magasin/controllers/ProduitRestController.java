@@ -36,7 +36,7 @@ public class ProduitRestController {
 	
 	@GetMapping("/retrieve-produit/{produit-id}")
 	@ResponseBody
-	public Produit retrieveProduit(@PathVariable("detailProduit-id") Long produitId) {
+	public Produit retrieveProduit(@PathVariable("produit-id") Long produitId) {
 	return produitService.retrieveProduit(produitId);
 	}
 	@PostMapping("/add-produit/{stock-id}/{rayon-id}")
