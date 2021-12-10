@@ -15,7 +15,7 @@ public interface IDetailFactureService {
 
 	void deleteDetailFacture(Long id);
 
-	DetailFacture updateDetailFacture(DetailFacture df);
+	DetailFacture updateDetailFacture(DetailFacture df, Long idF);
 
 	DetailFacture retrieveDetailFacture(Long id);
 	

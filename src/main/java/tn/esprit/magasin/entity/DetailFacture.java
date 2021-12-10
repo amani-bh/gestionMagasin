@@ -35,8 +35,8 @@ public class DetailFacture implements Serializable {
 	@Column(name = "idDetailFacture")
 	private Long idDetailFacture;
 	private int qte;
-	private float prixTotal;
 	private int pourcentageRemise;
+	private float prixTotal;
 	private float montantRemise;
 	@Temporal(TemporalType.DATE)
 	private Date createdAt;

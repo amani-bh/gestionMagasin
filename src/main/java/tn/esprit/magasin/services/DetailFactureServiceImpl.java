@@ -39,11 +39,6 @@ public class DetailFactureServiceImpl implements IDetailFactureService {
 	}
 
 	@Override
-	public DetailFacture updateDetailFacture(DetailFacture df) {
-		return repo.save(df);
-	}
-
-	@Override
 	public DetailFacture retrieveDetailFacture(Long id) {
 		return repo.findById(id).orElse(null);
 	}
@@ -64,6 +59,13 @@ public class DetailFactureServiceImpl implements IDetailFactureService {
 	@Override
 	public List<DetailFacture> retrieveDetailFactureByIdFacture(Long idF) {
 		return repo.findByFacture(repoFacture.findById(idF).orElse(null));
+	}
+
+
+	@Override
+	public DetailFacture updateDetailFacture(DetailFacture df, Long idF) {
+		df.setFacture(repoFacture.getById(idF));
+		return repo.save(df);
 	}
 
 }
