@@ -22,4 +22,6 @@ public interface IDetailFactureService {
 	List<Dashboard> dashPrixDate();
 	
 	List<DetailFacture> retrieveDetailFactureByIdFacture(Long idF);
+	
+	List<DetailFacture> search(String keyword);
 }

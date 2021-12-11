@@ -68,4 +68,13 @@ public class DetailFactureServiceImpl implements IDetailFactureService {
 		return repo.save(df);
 	}
 
+
+	@Override
+	public List<DetailFacture> search(String keyword) {
+		if (keyword != null) {
+            return repo.search(keyword);
+        }
+        return repo.findAll();
+	}
+
 }
