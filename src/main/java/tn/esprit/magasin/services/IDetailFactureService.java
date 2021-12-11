@@ -1,11 +1,14 @@
 package tn.esprit.magasin.services;
 
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
 import tn.esprit.magasin.entity.Dashboard;
 import tn.esprit.magasin.entity.DetailFacture;
-import tn.esprit.magasin.entity.Facture;;
+import tn.esprit.magasin.entity.Facture;
+import tn.esprit.magasin.entity.Produit;;
 
 public interface IDetailFactureService {
 
@@ -22,4 +25,10 @@ public interface IDetailFactureService {
 	List<Dashboard> dashPrixDate();
 	
 	List<DetailFacture> retrieveDetailFactureByIdFacture(Long idF);
+	
+	List<DetailFacture> search(String keyword);
+	
+	List<?> bestProduct(Date startDate, Date endDate);
+	
+	List<?> getPrixDate();
 }
