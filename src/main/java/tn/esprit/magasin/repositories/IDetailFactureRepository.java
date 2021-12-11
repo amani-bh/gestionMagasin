@@ -1,6 +1,7 @@
 package tn.esprit.magasin.repositories;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -8,9 +9,11 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import tn.esprit.magasin.entity.CategorieClient;
+import tn.esprit.magasin.entity.Client;
 import tn.esprit.magasin.entity.Dashboard;
 import tn.esprit.magasin.entity.DetailFacture;
 import tn.esprit.magasin.entity.Facture;
+import tn.esprit.magasin.entity.Produit;
 
 
 public interface IDetailFactureRepository extends JpaRepository<DetailFacture, Long>{
@@ -23,9 +26,17 @@ List<Dashboard> dashPrixDate();
 
 List<DetailFacture> findByFacture(Facture f);
 
+// serach
 @Query("SELECT df FROM DetailFacture df WHERE df.produit.libelle LIKE %:keyword%"
         + " OR CONCAT(df.pourcentageRemise, '') LIKE %:keyword%"
         + " OR df.qte LIKE %:keyword%"
         + " OR CONCAT(df.prixTotal, '') LIKE %:keyword%")
-public List<DetailFacture> search(@Param("keyword") String keyword);
+List<DetailFacture> search(@Param("keyword") String keyword);
+//best product from detail facture
+@Query("SELECT max(df.produit),df.facture.client.categorieClient FROM DetailFacture df where df.facture.dateFacture between :startDate and :endDate and df.facture.active=true ")
+List<?> bestProduct(@Param("startDate") Date startDate,@Param("endDate") Date endDate);
+
+// CA chaque jour
+@Query("SELECT sum(df.prixTotal) ,  df.createdAt  FROM DetailFacture df GROUP BY  df.createdAt ORDER BY df.createdAt")
+List<?> getPrixDate();
 }

@@ -1,6 +1,7 @@
 package tn.esprit.magasin.services;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
@@ -11,6 +12,8 @@ import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
 import tn.esprit.magasin.entity.CategorieClient;
+import tn.esprit.magasin.entity.Client;
+import tn.esprit.magasin.entity.Dashboard;
 import tn.esprit.magasin.entity.DetailFacture;
 import tn.esprit.magasin.entity.Facture;
 import tn.esprit.magasin.entity.Produit;
@@ -108,6 +111,12 @@ public class FactureServiceImpl implements IFactureService{
 		f.setDateFacture(new Date());
 		f.setActive(true);
 		return repo.save(f);
+	}
+
+	@Override
+	public List<?>  getCaByCategorie() {
+		// TODO Auto-generated method stub
+		return repo.getCAByCategorie();
 	}
 
 }
