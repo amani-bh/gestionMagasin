@@ -65,7 +65,7 @@ return clientService.getByUserName(username);
 }
 @GetMapping("/retrieve-nbr-client")
 @ResponseBody
-public long retrieveNbrClients(){
+public Long retrieveNbrClients(){
 	return clientService.retrieveNbrClients();
 }
 @GetMapping("/clients_fidele")

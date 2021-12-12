@@ -30,8 +30,8 @@ public interface IClientService {
 	@Query("SELECT c FROM Client c WHERE c.categorieClient= :'Fidele' ")
 	List<Client> retrieveClientsFidele(@Param("categorieClient") CategorieClient categorieClient);
 	
-	@Query("SELECT sum(*) FROM Client ")
-	long retrieveNbrClients();
+	@Query("SELECT count(*) FROM Client ")
+	Long retrieveNbrClients();
 	@Modifying(clearAutomatically = true)
 	@Query("update Client c set c.password =:pass where c.idClient=:id")
 	Client resetPassword(@Param("id") Long idClient,@Param("pass") String password);

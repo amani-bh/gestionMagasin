@@ -62,7 +62,7 @@ public class ClientServiceImpl implements IClientService {
 	}
 
 	@Override
-	public long retrieveNbrClients() {
+	public Long retrieveNbrClients() {
 		
 		return clientRepository.count();
 	}
