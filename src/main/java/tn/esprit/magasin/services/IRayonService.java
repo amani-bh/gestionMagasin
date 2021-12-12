@@ -14,4 +14,6 @@ public interface IRayonService {
 	Rayon updateRayon(Rayon r);
 
 	Rayon retrieveRayon(Long id);
+	
+	Rayon RayonByProduit(Long idProduit);
 }

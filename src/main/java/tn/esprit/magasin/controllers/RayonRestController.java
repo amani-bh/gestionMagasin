@@ -68,4 +68,12 @@ public class RayonRestController {
 	public Rayon modifyRayon(@RequestBody Rayon rayon) {
 		return rayonService.updateRayon(rayon);
 	}
+	
+	// http://localhost:8082/SpringMVC/rayon/rayon-produit/1
+		@GetMapping("/rayon-produit/{produit-id}")
+		@ApiOperation(value = "Récupérer un rayon par produit")
+		@ResponseBody
+		Rayon RayonByProduit(@PathVariable("produit-id") Long idProduit) {
+			return rayonService.RayonByProduit(idProduit);
+		}
 }
