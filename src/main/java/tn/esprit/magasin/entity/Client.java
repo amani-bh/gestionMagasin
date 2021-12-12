@@ -57,7 +57,6 @@ public class Client implements Serializable {
 	private Profession profession;
 	private Boolean active;
 	@OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL, mappedBy = "client")
-
 	@JsonIgnore
 	private List<Facture> factures;
 
@@ -65,6 +64,12 @@ public class Client implements Serializable {
 	public Client() {
 		super();
 		
+	}
+
+
+	public Client orElse(Object object) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

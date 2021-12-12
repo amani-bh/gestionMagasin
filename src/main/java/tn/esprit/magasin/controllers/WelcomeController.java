@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,7 +19,7 @@ import tn.esprit.magasin.entity.Client;
 import tn.esprit.magasin.repositories.IClientRepository;
 import tn.esprit.magasin.services.IClientService;
 import tn.esprit.magasin.utils.JwtUtil;
-
+@CrossOrigin("http://localhost:4200")
 @RestController
 public class WelcomeController {
 	@Autowired
