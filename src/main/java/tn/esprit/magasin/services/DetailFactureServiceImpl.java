@@ -1,5 +1,7 @@
 package tn.esprit.magasin.services;
 
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
@@ -39,11 +41,6 @@ public class DetailFactureServiceImpl implements IDetailFactureService {
 	}
 
 	@Override
-	public DetailFacture updateDetailFacture(DetailFacture df) {
-		return repo.save(df);
-	}
-
-	@Override
 	public DetailFacture retrieveDetailFacture(Long id) {
 		return repo.findById(id).orElse(null);
 	}
@@ -64,6 +61,34 @@ public class DetailFactureServiceImpl implements IDetailFactureService {
 	@Override
 	public List<DetailFacture> retrieveDetailFactureByIdFacture(Long idF) {
 		return repo.findByFacture(repoFacture.findById(idF).orElse(null));
+	}
+
+
+	@Override
+	public DetailFacture updateDetailFacture(DetailFacture df, Long idF) {
+		df.setFacture(repoFacture.getById(idF));
+		return repo.save(df);
+	}
+
+
+	@Override
+	public List<DetailFacture> search(String keyword) {
+		if (keyword != null) {
+            return repo.search(keyword);
+        }
+        return repo.findAll();
+	}
+
+
+	@Override
+	public List<?> bestProduct(Date startDate, Date endDate) {
+		return repo.bestProduct(startDate, endDate);
+	}
+
+
+	@Override
+	public List<?> getPrixDate() {
+		return repo.getPrixDate();
 	}
 
 }

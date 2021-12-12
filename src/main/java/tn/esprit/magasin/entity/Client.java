@@ -55,7 +55,9 @@ public class Client implements Serializable {
 	private CategorieClient categorieClient;
 	@Enumerated(EnumType.STRING)
 	private Profession profession;
+
 	private Boolean active;
+
 	@OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL, mappedBy = "client")
 	@JsonIgnore
 	private List<Facture> factures;

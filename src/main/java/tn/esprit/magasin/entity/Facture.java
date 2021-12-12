@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,6 +17,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -44,10 +46,11 @@ public class Facture implements Serializable{
 	@Temporal(TemporalType.DATE)
 	private Date createdAt;
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="facture")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="facture", fetch = FetchType.LAZY)
 	private List <DetailFacture> detailFactures;
 	
 	@ManyToOne
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	private Client client;
 
 	
