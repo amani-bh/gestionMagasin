@@ -71,4 +71,9 @@ public class ProduitServiceImpl implements IProduitService{
 		return repo.nbrTotalProduit();
 	}
 
+	@Override
+	public DetailProduit getdetailProduitByLibelle(String libelle) {
+		return repo.getdetailProduitByLibelle(libelle);
+	}
+
 }
