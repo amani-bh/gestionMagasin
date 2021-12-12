@@ -6,7 +6,9 @@ import org.springframework.data.jpa.repository.Query;
 import tn.esprit.magasin.entity.Produit;
 
 public interface IProduitRepository extends JpaRepository<Produit, Long>{
-	
+@Query("select max(p.detailProduit.categorieProduit) from Produit p ")
+String bestCategory();
 
-
+@Query("select count(p) from Produit p")
+int nbrTotalProduit();
 }
