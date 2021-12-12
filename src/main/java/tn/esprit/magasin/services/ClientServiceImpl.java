@@ -6,17 +6,20 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import tn.esprit.magasin.entity.CategorieClient;
 import tn.esprit.magasin.entity.Client;
+import tn.esprit.magasin.entity.Facture;
 import tn.esprit.magasin.entity.Profession;
 import tn.esprit.magasin.repositories.IClientRepository;
 
 @Slf4j
 @Service
 public class ClientServiceImpl implements IClientService {
-
+	
 	@Autowired
 	IClientRepository clientRepository;
-
+	@Autowired
+	IClientService ics;
 	@Override
 	public List<Client> retrieveAllClients() {
 		return clientRepository.findAll();
@@ -45,11 +48,40 @@ public class ClientServiceImpl implements IClientService {
 
 		return clientRepository.findById(id).orElse(null);
 	}
+	
 
 	@Override
 	public List<Client> retrieveClientsByProfession(Profession profession) {
 		
 		return clientRepository.findByProfession(profession);
+	}
+
+	@Override
+	public Client getByUserName(String userName) {
+		return clientRepository.findByUserName(userName);
+	}
+
+	@Override
+	public Long retrieveNbrClients() {
+		
+		return clientRepository.count();
+	}
+
+	@Override
+	public List<Client> retrieveClientsFidele(CategorieClient categorieClient) {
+		
+		return clientRepository.findByCategorieClient(categorieClient);
+	}
+
+	@Override
+	public Client resetPassword(Long idClient, String password) 
+	{
+		Client cli;
+				cli=clientRepository.getById(idClient);
+		System.out.println(cli.toString());
+		cli.setPassword(password);
+		
+		return clientRepository.save(cli);
 	}
 
 

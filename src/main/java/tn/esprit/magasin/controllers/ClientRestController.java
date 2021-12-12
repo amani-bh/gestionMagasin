@@ -1,5 +1,6 @@
 package tn.esprit.magasin.controllers;
 
+import tn.esprit.magasin.entity.CategorieClient;
 import tn.esprit.magasin.entity.Client;
 import tn.esprit.magasin.entity.Profession;
 
@@ -57,6 +58,31 @@ return clientService.updateClient(client);
 public  List<Client>  listClient(@PathVariable("profession") Profession profession) {
 return clientService.retrieveClientsByProfession(profession);
 }
+@GetMapping("/retrieve/{username}")
+@ResponseBody
+public  Client  getClient(@PathVariable("username") String username) {
+return clientService.getByUserName(username);
+}
+@GetMapping("/retrieve-nbr-client")
+@ResponseBody
+public Long retrieveNbrClients(){
+	return clientService.retrieveNbrClients();
+}
+@GetMapping("/clients_fidele")
+@ResponseBody
+public List<Client>  retrieveClientsFidele (){
+	
+	CategorieClient CCl =CategorieClient.Fidele;
+	return clientService.retrieveClientsFidele(CCl);
+	
+}
+
+@PostMapping("/reset-pass")
+@ResponseBody
+public Client resetPassword(@RequestBody Long idClient, @RequestBody String password){
+	return clientService.resetPassword(idClient, password);
+}
+
 
 
 }
