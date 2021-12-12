@@ -55,4 +55,14 @@ public class ProduitRestController {
 	return produitService.updateProduit(p, rayonId, stockId);
 	}
 	
+	@GetMapping("/get-best-catg")
+	public String getBestCatg() {
+	return produitService.getbestCategory();
+	}
+
+	@GetMapping("/nbr-total-produit")
+	public String nbrTotalProduit() {
+	return "le nombre total des produits est: "+produitService.nbrTotalProduit();
+	}
+
 }

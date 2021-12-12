@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
+import tn.esprit.magasin.entity.CategorieProduit;
 import tn.esprit.magasin.entity.DetailProduit;
+import tn.esprit.magasin.entity.Produit;
 import tn.esprit.magasin.repositories.IDetailProduitRepository;
 
 @Slf4j
@@ -39,6 +41,11 @@ public class DetailProduitServiceImpl implements IDetailProduitService{
 	@Override
 	public DetailProduit retrieveDetailProduit(Long id) {
 		return repo.findById(id).orElse(null);
+	}
+
+	@Override
+	public List<Produit> ProduitByCategorieProduit(CategorieProduit categorieProduit) {
+		return repo.findProduitByCategorieProduit(categorieProduit);
 	}
 
 }
