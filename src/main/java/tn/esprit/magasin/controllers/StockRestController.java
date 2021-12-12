@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import tn.esprit.magasin.entity.CategorieProduit;
 import tn.esprit.magasin.entity.Stock;
 import tn.esprit.magasin.services.IStockService;
 
@@ -78,18 +79,41 @@ public class StockRestController {
 		return stockService.updateStock(stock);
 	}
 
-	// http://localhost:8082/SpringMVC/stock/retrieve-stock-produit
+	// http://localhost:8082/SpringMVC/stock/retrieve-stock-produit/1
 	@GetMapping("/retrieve-stock-produit/{produit-id}")
 	@ResponseBody
-	List<Stock> getStocksByProduit(@PathVariable("produit-id") Long idProduit) {
+	int getStocksByProduit(@PathVariable("produit-id") Long idProduit) {
 		return stockService.getStocksByProduit(idProduit);
 	}
 
-	// http://localhost:8082/SpringMVC/stock/assign-produit-stock
+	// http://localhost:8082/SpringMVC/stock/assign-produit-stock/1/11
 	@GetMapping("/assign-produit-stock/{produit-id}/{stock-id}")
 	@ResponseBody
 	public void assignProduitToStock(@PathVariable("produit-id") Long idProduit,
 			@PathVariable("stock-id") Long idStock) {
 		stockService.assignProduitToStock(idProduit, idStock);
 	}
+
+	// http://localhost:8082/SpringMVC/stock/notif-stock
+	@GetMapping("/notif-stock")
+	@ApiOperation(value = "Notification de stock")
+	@ResponseBody
+	public List<Stock> warnStock() {
+		return stockService.warnStock();
+	}
+	
+	// http://localhost:8082/SpringMVC/stock/stock-categorie-produit/{categorieProduit}
+		@GetMapping("/stock-categorie-produit/{categorieProduit}")
+		@ApiOperation(value = "Recuperer stock par categorie produit")
+		@ResponseBody
+		Stock getStockByCategorieProduit(@PathVariable("categorieProduit") CategorieProduit categorieProduit)  {
+			return stockService.getStockByCategorieProduit(categorieProduit);
+		}
+		
+		// http://localhost:8082/SpringMVC/stock/stock-produit/1
+		@GetMapping("/stock-produit/{produit-id}")
+		@ResponseBody
+		Stock StocksByProduit(@PathVariable("produit-id") Long idProduit) {
+			return stockService.StockByProduit(idProduit);
+		}	
 }

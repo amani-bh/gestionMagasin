@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
+import tn.esprit.magasin.entity.CategorieProduit;
 import tn.esprit.magasin.entity.Produit;
 import tn.esprit.magasin.entity.Stock;
 import tn.esprit.magasin.repositories.IProduitRepository;
@@ -70,8 +71,23 @@ public class StockServiceImpl implements IStockService {
 	}
 
 	@Override
-	public List<Stock> getStocksByProduit(Long idProduit) {
+	public int getStocksByProduit(Long idProduit) {
 		return stockRepository.getQteStockByIdProduitJPQL(idProduit);
+	}
+
+	@Override
+	public List<Stock> warnStock() {
+		return stockRepository.warnStock();
+	}
+
+	@Override
+	public Stock getStockByCategorieProduit(CategorieProduit categorieProduit) {
+		return stockRepository.getStockByCategorieProduit(categorieProduit);
+	}
+
+	@Override
+	public Stock StockByProduit(Long idProduit) {
+		return stockRepository.StockByProduit(idProduit);
 	}
 
 }
