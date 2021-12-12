@@ -64,5 +64,10 @@ public class ProduitRestController {
 	public String nbrTotalProduit() {
 	return "le nombre total des produits est: "+produitService.nbrTotalProduit();
 	}
+	@GetMapping("/get-dp-by-libelle/{libelle}")
+	public DetailProduit getdetailProduitByLibelle(@PathVariable("libelle") String Libelle) {
+	return produitService.getdetailProduitByLibelle(Libelle);
+
+	}
 
 }
