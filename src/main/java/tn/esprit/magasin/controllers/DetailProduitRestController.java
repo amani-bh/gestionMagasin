@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import tn.esprit.magasin.entity.CategorieProduit;
 import tn.esprit.magasin.entity.DetailProduit;
 import tn.esprit.magasin.entity.Produit;
 import tn.esprit.magasin.services.IDetailProduitService;
@@ -53,11 +52,6 @@ public class DetailProduitRestController {
 	@ResponseBody
 	public DetailProduit modifydetailProduit(@RequestBody DetailProduit dp) {
 	return dProduitService.updateDetailProduit(dp);
-	}
-	
-	@GetMapping("/produits-by-categorie/{categorie}")
-	public List<Produit> getProduitByCategorieProduit(@PathVariable("categorie") CategorieProduit categorie) {
-	return dProduitService.ProduitByCategorieProduit(categorie);
 	}
 	
 }
