@@ -4,7 +4,9 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
 import tn.esprit.magasin.entity.CategorieClient;
+import tn.esprit.magasin.entity.Client;
+import tn.esprit.magasin.entity.Dashboard;
 import tn.esprit.magasin.entity.Facture;
 import tn.esprit.magasin.services.IFactureService;
 import tn.esprit.magasin.utils.GeneratePdf;
@@ -108,5 +112,12 @@ public class FactureRestController {
 	{
 		Facture f= factureService.add(clientId);
 	return f;
+	}
+	
+	@GetMapping("/best-2-client")
+	@ResponseBody
+	public List<?>  getCaByCatClient() {
+		
+	return factureService.getCaByCategorie().subList(0, 2);
 	}
 }

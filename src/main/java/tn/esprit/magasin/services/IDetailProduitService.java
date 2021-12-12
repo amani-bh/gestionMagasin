@@ -12,7 +12,7 @@ public interface IDetailProduitService {
 
 	void deleteDetailProduit(Long id);
 
-	DetailProduit updateDetailFacture(DetailProduit dp);
+	DetailProduit updateDetailProduit(DetailProduit dp);
 
 	DetailProduit retrieveDetailProduit(Long id);
 }

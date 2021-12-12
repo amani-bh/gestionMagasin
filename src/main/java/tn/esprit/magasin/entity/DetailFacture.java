@@ -14,6 +14,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -35,13 +36,14 @@ public class DetailFacture implements Serializable {
 	@Column(name = "idDetailFacture")
 	private Long idDetailFacture;
 	private int qte;
-	private float prixTotal;
 	private int pourcentageRemise;
+	private float prixTotal;
 	private float montantRemise;
 	@Temporal(TemporalType.DATE)
 	private Date createdAt;
 
 	@ManyToOne
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	private Produit produit;
 	
 	@ManyToOne
