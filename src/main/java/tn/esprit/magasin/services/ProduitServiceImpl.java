@@ -61,4 +61,19 @@ public class ProduitServiceImpl implements IProduitService{
 		
 	}
 
+	@Override
+	public String getbestCategory() {
+		return repo.bestCategory();
+	}
+
+	@Override
+	public int nbrTotalProduit() {
+		return repo.nbrTotalProduit();
+	}
+
+	@Override
+	public DetailProduit getdetailProduitByLibelle(String libelle) {
+		return repo.getdetailProduitByLibelle(libelle);
+	}
+
 }

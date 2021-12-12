@@ -43,4 +43,9 @@ public class RayonServiceImpl implements IRayonService {
 		return rayonRepo.findById(id).orElse(null);
 	}
 
+	@Override
+	public Rayon RayonByProduit(Long idProduit) {
+		return rayonRepo.RayonByProduit(idProduit);
+	}
+
 }

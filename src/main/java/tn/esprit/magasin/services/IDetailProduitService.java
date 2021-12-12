@@ -2,7 +2,9 @@ package tn.esprit.magasin.services;
 
 import java.util.List;
 
+import tn.esprit.magasin.entity.CategorieProduit;
 import tn.esprit.magasin.entity.DetailProduit;
+import tn.esprit.magasin.entity.Produit;
 
 public interface IDetailProduitService {
 	
@@ -15,4 +17,6 @@ public interface IDetailProduitService {
 	DetailProduit updateDetailProduit(DetailProduit dp);
 
 	DetailProduit retrieveDetailProduit(Long id);
+	
+	List<Produit> ProduitByCategorieProduit(CategorieProduit categorieProduit);
 }
