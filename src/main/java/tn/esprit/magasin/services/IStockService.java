@@ -2,6 +2,7 @@ package tn.esprit.magasin.services;
 
 import java.util.List;
 
+import tn.esprit.magasin.entity.CategorieProduit;
 import tn.esprit.magasin.entity.Stock;
 
 public interface IStockService {
@@ -14,11 +15,17 @@ public interface IStockService {
 	Stock retrieveStock(Long id);
 
 	void deleteStock(Long id);
-	
+
 	Stock getlibelleStock(String libelleStock);
 
 	void assignProduitToStock(Long idProduit, Long idStock);
+
+	int getStocksByProduit(Long idProduit);
+
+	List<Stock> warnStock();
+
+	Stock getStockByCategorieProduit(CategorieProduit categorieProduit);
 	
-	List<Stock> getStocksByProduit(Long idProduit);
+	Stock StockByProduit(Long idProduit);
 
 }
