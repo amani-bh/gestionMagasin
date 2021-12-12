@@ -16,4 +16,8 @@ public interface IProduitService {
 	
 	Produit retrieveProduit(Long id);
 	
+	String getbestCategory();
+	
+	int nbrTotalProduit();
+	
 }
