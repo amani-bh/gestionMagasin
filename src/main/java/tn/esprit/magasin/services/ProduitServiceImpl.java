@@ -10,6 +10,8 @@ import lombok.extern.slf4j.Slf4j;
 import tn.esprit.magasin.entity.CategorieProduit;
 import tn.esprit.magasin.entity.DetailProduit;
 import tn.esprit.magasin.entity.Produit;
+import tn.esprit.magasin.entity.Rayon;
+import tn.esprit.magasin.entity.Stock;
 import tn.esprit.magasin.repositories.IDetailProduitRepository;
 import tn.esprit.magasin.repositories.IProduitRepository;
 import tn.esprit.magasin.repositories.IRayonRepository;
@@ -37,7 +39,7 @@ public class ProduitServiceImpl implements IProduitService{
 	public Produit addProduit(Produit p, Long idRayon, Long idStock) {
 		DetailProduit dp=new DetailProduit();
 		dp.setDateCreation(new Date());
-		dp.setCategorieProduit(CategorieProduit.Alimentaire);
+		//dp.setCategorieProduit(CategorieProduit.Alimentaire);
 		detailRepo.save(dp);
 		p.setRayon(rayonRepo.findById(idRayon).orElse(null));
 		p.setStock(stockRepo.findById(idStock).orElse(null));
@@ -47,11 +49,18 @@ public class ProduitServiceImpl implements IProduitService{
 
 	@Override
 	public Produit retrieveProduit(Long id) {
+		
 		return repo.findById(id).orElse(null);
 	}
 
 	@Override
 	public Produit updateProduit(Produit p, Long idRayon, Long idStock) {
+		DetailProduit dp = p.getDetailProduit();
+		Rayon r=p.getRayon();
+		Stock s=p.getStock();
+		p.setDetailProduit(dp);
+		//p.setRayon(r);
+		//p.setStock(s);
 		return repo.save(p);
 	}
 
@@ -74,6 +83,12 @@ public class ProduitServiceImpl implements IProduitService{
 	@Override
 	public DetailProduit getdetailProduitByLibelle(String libelle) {
 		return repo.getdetailProduitByLibelle(libelle);
+	}
+
+	@Override
+	public List<Produit> getProduitByLibelle(CategorieProduit categorie) {
+		// TODO Auto-generated method stub
+		return repo.getProduitByLibelle(categorie);
 	}
 
 }
