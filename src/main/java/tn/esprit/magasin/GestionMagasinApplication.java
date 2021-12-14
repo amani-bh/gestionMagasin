@@ -23,7 +23,7 @@ public class GestionMagasinApplication {
 		return new WebMvcConfigurer(){
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/*").allowedHeaders("*").allowedOrigins("**").allowedMethods("*").allowCredentials(true);
+				registry.addMapping("/api/auth/*").allowedHeaders("*").allowedOriginPatterns("*").allowedMethods("*").allowCredentials(true);
 			}
 		};
 	}
