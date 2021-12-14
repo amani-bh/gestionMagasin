@@ -49,7 +49,7 @@ public class DetailProduitRestController {
 	public void removedProduit(@PathVariable("detailProduit-id") Long produitId) {
 	dProduitService.deleteDetailProduit(produitId);
 	}
-	@PutMapping("/modify-detailproduit/{stock-id}/{rayon-id}")
+	@PutMapping("/modify-detailproduit")
 	@ResponseBody
 	public DetailProduit modifydetailProduit(@RequestBody DetailProduit dp) {
 	return dProduitService.updateDetailProduit(dp);
