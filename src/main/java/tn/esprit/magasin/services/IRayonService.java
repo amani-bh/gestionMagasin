@@ -2,6 +2,7 @@ package tn.esprit.magasin.services;
 
 import java.util.List;
 
+import tn.esprit.magasin.entity.Produit;
 import tn.esprit.magasin.entity.Rayon;
 
 public interface IRayonService {
@@ -16,4 +17,6 @@ public interface IRayonService {
 	Rayon retrieveRayon(Long id);
 	
 	Rayon RayonByProduit(Long idProduit);
+	
+	List<Produit> RayonByIdProduit(Long idRayon);
 }
