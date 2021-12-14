@@ -56,7 +56,7 @@ public class FactureRestController {
 	}
 
 
-	@PostMapping("/add-facture/{facture-id}/{client-id}")
+	@PostMapping("/Calcul-facture/{facture-id}/{client-id}")
 	@ResponseBody
 	public Facture addFacture(@PathVariable("facture-id") Long f,@PathVariable("client-id") Long clientId)
 	{
@@ -118,6 +118,6 @@ public class FactureRestController {
 	@ResponseBody
 	public List<?>  getCaByCatClient() {
 		
-	return factureService.getCaByCategorie().subList(0, 2);
+	return factureService.getCaByCategorie();
 	}
 }

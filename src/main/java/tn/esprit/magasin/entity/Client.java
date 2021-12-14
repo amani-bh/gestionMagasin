@@ -3,6 +3,7 @@ package tn.esprit.magasin.entity;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -15,10 +16,12 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.JoinColumn;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
@@ -55,7 +58,11 @@ public class Client implements Serializable {
 	private CategorieClient categorieClient;
 	@Enumerated(EnumType.STRING)
 	private Profession profession;
-
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(	name = "user_roles", 
+				joinColumns = @JoinColumn(name = "user_id"), 
+				inverseJoinColumns = @JoinColumn(name = "role_id"))
+	private Set<Role> roles = new HashSet<>();
 	private Boolean active;
 	@OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL, mappedBy = "client")
 	@JsonIgnore
@@ -69,6 +76,12 @@ public class Client implements Serializable {
 
 
 	public Client orElse(Object object) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	public Client orElseThrow(Object object) {
 		// TODO Auto-generated method stub
 		return null;
 	}
