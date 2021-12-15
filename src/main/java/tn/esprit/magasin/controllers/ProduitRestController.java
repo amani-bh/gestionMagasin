@@ -72,7 +72,7 @@ public class ProduitRestController {
 	}
 	
 
-@GetMapping("/get-produit-by-categorie/{categorie}")
+@GetMapping("/get-produit-categorie/{categorie}")
 public List<Produit> getProduitByCategorie(@PathVariable("categorie") CategorieProduit categorie) {
 return produitService.getProduitByLibelle(categorie);
 

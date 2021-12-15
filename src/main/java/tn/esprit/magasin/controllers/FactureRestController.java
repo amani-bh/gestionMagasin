@@ -56,9 +56,9 @@ public class FactureRestController {
 	}
 
 
-	@PostMapping("/Calcul-facture/{facture-id}/{client-id}")
+	@PostMapping("/add-facture/{facture-id}/{client-id}")
 	@ResponseBody
-	public Facture addFacture(@PathVariable("facture-id") Long f,@PathVariable("client-id") Long clientId)
+	public Facture addFacture(@RequestBody Facture p,@PathVariable("facture-id") Long f,@PathVariable("client-id") Long clientId)
 	{
 		Facture facture = factureService.addFacture(f,clientId);
 	return facture;
