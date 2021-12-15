@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import tn.esprit.magasin.entity.Produit;
 import tn.esprit.magasin.entity.Rayon;
 import tn.esprit.magasin.services.IRayonService;
 
@@ -75,5 +76,13 @@ public class RayonRestController {
 		@ResponseBody
 		Rayon RayonByProduit(@PathVariable("produit-id") Long idProduit) {
 			return rayonService.RayonByProduit(idProduit);
+		}
+		
+		// http://localhost:8082/SpringMVC/rayon/produits-id-rayon/1
+		@GetMapping("/produits-id-rayon/{rayon-id}")
+		@ApiOperation(value = "Récupérer liste de produits par idRayon")
+		@ResponseBody
+		public List<Produit> RayonByIdProduit(@PathVariable("rayon-id")Long idRayon) {
+			return rayonService.RayonByIdProduit(idRayon);
 		}
 }

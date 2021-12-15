@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.data.repository.query.Param;
 
+import tn.esprit.magasin.entity.CategorieProduit;
 import tn.esprit.magasin.entity.DetailProduit;
 import tn.esprit.magasin.entity.Produit;
 
@@ -23,5 +24,6 @@ public interface IProduitService {
 	
 	int nbrTotalProduit();
 	DetailProduit getdetailProduitByLibelle (String libelle);
+	List<Produit> getProduitByLibelle(CategorieProduit categorie);
 	
 }

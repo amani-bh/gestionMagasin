@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import tn.esprit.magasin.entity.CategorieProduit;
 import tn.esprit.magasin.entity.Client;
 import tn.esprit.magasin.entity.DetailProduit;
 import tn.esprit.magasin.entity.Produit;
@@ -69,5 +70,12 @@ public class ProduitRestController {
 	return produitService.getdetailProduitByLibelle(Libelle);
 
 	}
+	
+
+@GetMapping("/get-produit-by-categorie/{categorie}")
+public List<Produit> getProduitByCategorie(@PathVariable("categorie") CategorieProduit categorie) {
+return produitService.getProduitByLibelle(categorie);
+
+}
 
 }

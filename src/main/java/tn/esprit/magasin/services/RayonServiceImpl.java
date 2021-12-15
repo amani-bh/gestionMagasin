@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
+import tn.esprit.magasin.entity.Produit;
 import tn.esprit.magasin.entity.Rayon;
 import tn.esprit.magasin.repositories.IRayonRepository;
 
@@ -46,6 +47,11 @@ public class RayonServiceImpl implements IRayonService {
 	@Override
 	public Rayon RayonByProduit(Long idProduit) {
 		return rayonRepo.RayonByProduit(idProduit);
+	}
+
+	@Override
+	public List<Produit> RayonByIdProduit(Long idRayon) {
+		return rayonRepo.RayonByIdProduit(idRayon);
 	}
 
 }
