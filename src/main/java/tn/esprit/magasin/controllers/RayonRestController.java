@@ -78,7 +78,7 @@ public class RayonRestController {
 			return rayonService.RayonByProduit(idProduit);
 		}
 		
-		// http://localhost:8082/SpringMVC/rayon/produits-id-rayon/1
+		// http://localhost:8082/SpringMVC/rayon/produits-id-rayon/2
 		@GetMapping("/produits-id-rayon/{rayon-id}")
 		@ApiOperation(value = "Récupérer liste de produits par idRayon")
 		@ResponseBody
